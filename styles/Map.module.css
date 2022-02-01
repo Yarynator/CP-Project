@@ -1,0 +1,15 @@
+.markerDiv{
+    display: none;
+    padding: 1rem;
+    background-color: white;
+    border: solid 1px black;
+    transform: translateX(-40%);
+}
+
+.markerDivVisible{
+    display: block;
+    padding: 1rem;
+    background-color: white;
+    border: solid 1px black;
+    transform: translateX(-40%);
+}

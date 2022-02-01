@@ -1,0 +1,82 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 1rem;
+    z-index: 1;
+    background-color: white;
+}
+
+.menuItem{
+    display: flex;
+}
+
+.menuItem > li{
+    margin-left: 1rem;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+}
+
+.logContainer{
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.login{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 250px;
+    border: solid 1px black;
+    background-color: white;
+
+    text-align: center;
+
+    z-index: 1;
+}
+
+.login input, .login button{
+    margin-top: 1rem;
+}
+
+.register{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 250px;
+    border: solid 1px black;
+    background-color: white;
+
+    text-align: center;
+
+    z-index: 1;
+}
+
+.register input, .register button{
+    margin-top: 1rem;
+}
+
+.visible{
+    display: block;
+}
+
+.invisible{
+    display: none;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    cursor: pointer;
+}
