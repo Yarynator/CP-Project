@@ -6,4 +6,4 @@ First, run the development server:
 comming soon
 ```
 
-Open [Svjet.czs(https://svjet.cz).
+Open [Svjet.cz](https://svjet.cz).
