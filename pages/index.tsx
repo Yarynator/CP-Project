@@ -22,76 +22,6 @@ const Home: NextPage = () => {
         </h1>
         {/*<Mapa />*/}
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorem? Labore esse, obcaecati quis facilis ut possimus? Architecto perferendis, quod, odio deserunt modi dolores, dicta vitae cupiditate iure officia quidem!</p>
         
       </main>
 
@@ -103,7 +33,7 @@ const Home: NextPage = () => {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/logo.svg" alt="Vercel Logo" width={100} height={50} />
           </span>
         </a>
       </footer>
