@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/Menu.module.css";
 
-export const Login : React.FC = () => {
+/*export const Login : React.FC = () => {
 
     const [loginClasses, setLoginClasses] = useState(`${styles.login} ${styles.invisible}`);
 
@@ -50,4 +50,20 @@ export const Register : React.FC = () => {
     </div>
 
     </>
-}
+}*/
+
+export const Login = () => {
+    return <>
+    
+    <h5>Login</h5>
+    
+    </>;
+};
+
+export const Register = () => {
+    return <>
+    
+    <h5>Register</h5>
+    
+    </>;
+};
