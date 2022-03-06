@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react';
-import styles from '../styles/Menu.module.css'
+import { useState, useEffect } from 'react';
 import { Login, Register } from './Login'
 import styled from "styled-components";
 
@@ -13,7 +12,7 @@ const Container = styled.div`
     width: 100vw;
     padding: 1rem;
     z-index: 1;
-    background-color: white;
+    background-color: #F6EBD8;
 `;
 
 const Item = styled.ul`
@@ -25,9 +24,9 @@ const Item = styled.ul`
         list-style: none;
         cursor: pointer;
     }
-`;
+`; 
 
-export const Menu : React.FC = () => {
+export const Menu = () => {
 
     const [loginOpened, changeLoginOpened] = useState("none");
 
@@ -37,9 +36,9 @@ export const Menu : React.FC = () => {
             <Container>
                 <Item>
                     <li><Link href="/">Domů</Link></li>
-                    <li>Prohlížeč kluboven</li>
+                    <li><Link href="./prohlizec">Prohlížeč kluboven</Link></li>
                     <li><Link href="./mapa">Mapa</Link></li>
-                    <li>O projektu</li>
+                    <li><Link href="./projekt">O projektu</Link></li>
                 </Item>
                 <Item>
                     <li onClick={() => {
@@ -57,9 +56,9 @@ export const Menu : React.FC = () => {
             <Container>
                 <Item>
                     <li><Link href="/">Domů</Link></li>
-                    <li>Prohlížeč kluboven</li>
+                    <li><Link href="./prohlizec">Prohlížeč kluboven</Link></li>
                     <li><Link href="./mapa">Mapa</Link></li>
-                    <li>O projektu</li>
+                    <li><Link href="./projekt">O projektu</Link></li>
                 </Item>
                 <Item>
                     <li onClick={() => {
@@ -79,9 +78,9 @@ export const Menu : React.FC = () => {
             <Container>
                 <Item>
                     <li><Link href="/">Domů</Link></li>
-                    <li>Prohlížeč kluboven</li>
+                    <li><Link href="./prohlizec">Prohlížeč kluboven</Link></li>
                     <li><Link href="./mapa">Mapa</Link></li>
-                    <li>O projektu</li>
+                    <li><Link href="./projekt">O projektu</Link></li>
                 </Item>
                 <Item>
                     <li onClick={() => {

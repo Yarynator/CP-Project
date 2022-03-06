@@ -1,14 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Mapa } from '../components/Mapa'
 import { Menu } from '../components/Menu'
 import styles from '../styles/Home.module.css'
 import styled from "styled-components";
 import Link from 'next/link'
 
 const Odkaz = styled.span`
-    color: #6B96CA;
+    color: #657F6F;
 `;
 
 const Obsah = styled.main`
@@ -23,6 +22,7 @@ const Obsah = styled.main`
 
 const Container = styled.div`
   padding: 0 2rem;
+  background-color: #F6EBD8
 `;
 
 const Nadpis = styled.h1`
@@ -34,7 +34,7 @@ const Nadpis = styled.h1`
 
 const Podnadpis = styled.h3`
     margin-top: 5rem;
-    background-color: #D19C95;
+    background-color: #A4D2B2;
     padding: 1rem;
     border-radius: 1rem;
     border: solid 1px #A38456;
@@ -42,7 +42,7 @@ const Podnadpis = styled.h3`
 
 const Tip = styled.h3`
     font-size: 80%;
-    background-color: #ECA038;
+    background-color: #ECDCAF;
     padding: .7rem;
     border: solid 1px #A38456;
     border-radius:1rem
@@ -57,15 +57,15 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Menu />
       <Obsah>
 
         <Nadpis>Rezervátor skautských kluboven</Nadpis>
-        <Podnadpis>Pro přidání klubovny se přihlaš, pro prohlížení kluboven přejdi na záložku <Odkaz><Link href="./prohlizec">Prohlížeč kluboven</Link></Odkaz>.</Podnadpis>
+        <Podnadpis>Pro prohlížení kluboven přejdi na záložku <Odkaz><Link href="./prohlizec">Prohlížeč kluboven</Link></Odkaz>, pro přidání klubovny se přihlaš.</Podnadpis>
         <Tip>Tip: Pokud si chceš uložit klubovnu do oblíbených porovnávat je a hodnotit je, přihlaš se na svůj účet.</Tip>
         {/*<Mapa />*/}
 
         
-        <Menu />
       </Obsah>
 
       {/*<footer className={styles.footer}>
