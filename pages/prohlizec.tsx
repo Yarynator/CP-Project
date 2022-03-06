@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
+import { Kalendar } from "../components/Kalendar";
 import { Klubovna } from "../components/Klubovna";
 import { Menu } from "../components/Menu";
 
@@ -40,6 +41,8 @@ const ProhlizecPage : NextPage = () => {
 
             <Klubovna />
             <Klubovna />
+
+            <Kalendar />
         </Obsah>
 
     </Container>
