@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/Menu.module.css";
 import styled from "styled-components";
+import Link from "next/link";
 
 /*export const Login : React.FC = () => {
 
@@ -53,6 +54,10 @@ export const Register : React.FC = () => {
     </>
 }*/
 
+const Required = styled.span`
+    color: red;
+`;
+
 const AuthDiv = styled.div`
     background-color:  #BDD4DF;
     padding: 1rem;
@@ -99,10 +104,10 @@ const Submit = styled.input`
     padding: 1rem;
 `;
 
-function createInputField(idName: string, name: string, placeholder: string)
+function createInputField(idName: string, name: string, placeholder: string, required: boolean)
 {
     return <>
-    <InputField><Nazev htmlFor={idName}>{name}: </Nazev><Pole id={idName} name={idName} placeholder={placeholder}/></InputField>
+    <InputField><Nazev htmlFor={idName}>{name}{required ? <Required>*</Required> : ""}: </Nazev><Pole id={idName} name={idName} placeholder={placeholder}/></InputField>
     </>
 }
 
@@ -110,9 +115,9 @@ export const Login = () => {
     return <>
     <AuthDiv>
         <Title>Login</Title>
-        {createInputField("email", "E-mail", "karelklima@bezvamail.cz")}
-        {createInputField("password", "Heslo", "Heslo")}
-        <Submit type="submit" value="Zaregistrovat se" />
+        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true)}
+        {createInputField("password", "Heslo", "Heslo", true)}
+        <Link href="mojeKlubovna"><Submit type="submit" value="Přihlásit se"/></Link>
     </AuthDiv>
     
     </>;
@@ -123,12 +128,12 @@ export const Register = () => {
     
     <AuthDiv>
         <Title>Register</Title>
-        {createInputField("name", "Jméno", "Karel")}
-        {createInputField("nickname", "Přezdívka", "Tank")}
-        {createInputField("surname", "Příjmení", "Klíma")}
-        {createInputField("email", "E-mail", "karelklima@bezvamail.cz")}
-        {createInputField("password", "Heslo", "Heslo")}
-        {createInputField("passwordAgain", "Heslo znovu", "Heslo znovu")}
+        {createInputField("name", "Jméno", "Karel", true)}
+        {createInputField("nickname", "Přezdívka", "Tank", false)}
+        {createInputField("surname", "Příjmení", "Klíma", true)}
+        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true)}
+        {createInputField("password", "Heslo", "Heslo", true)}
+        {createInputField("passwordAgain", "Heslo znovu", "Heslo znovu", true)}
         <Submit type="submit" value="Zaregistrovat se" />
     </AuthDiv>
     </>;
