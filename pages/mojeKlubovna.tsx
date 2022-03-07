@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
 import { Menu } from "../components/Menu";
+import { MojeKlubovna } from "../components/MojeKlubovna";
 
 const Container = styled.div`
     background-color: #F6EBD8;
@@ -24,35 +25,7 @@ const Nadpis = styled.h1`
     font-size: 4rem;
 `;
 
-const KlubovnaStyle = styled.div`
-    border: solid 1px black;
-    padding: 1rem;
-`;
 
-const MapStyle = styled.div`
-    border: solid 1px black;
-    padding: 1rem;
-`;
-
-const DescriptionStyle = styled.div`
-    border: solid 1px black;
-    padding: 1rem;
-`;
-
-const Klubovna = () => {
-    return <>
-        <KlubovnaStyle>
-            <Map />
-            <DescriptionStyle />
-        </KlubovnaStyle>
-    </>;
-};
-
-const Map = () => {
-    return <>
-        <MapStyle />
-    </>
-}
 
 const MojeKlubovnaPage : NextPage = () => {
     return <>
@@ -66,7 +39,7 @@ const MojeKlubovnaPage : NextPage = () => {
             <Menu />
 
             <Nadpis>Moje Klubovna</Nadpis>
-            <Klubovna />
+            <MojeKlubovna />
             
         </Obsah>
 

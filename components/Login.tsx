@@ -69,6 +69,7 @@ const AuthDiv = styled.div`
     left: 50vw;
     transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 2;
 `;
 
 const Title = styled.h5`

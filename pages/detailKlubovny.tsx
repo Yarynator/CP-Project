@@ -1,8 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
-import { Kalendar } from "../components/Kalendar";
-import { Klubovna } from "../components/Klubovna";
 import { Menu } from "../components/Menu";
 
 const Container = styled.div`
@@ -25,7 +23,7 @@ const Nadpis = styled.h1`
     font-size: 4rem;
 `;
 
-const ProhlizecPage : NextPage = () => {
+const DetailKlubovnyPage : NextPage = () => {
     return <>
     
     <Container>
@@ -36,10 +34,7 @@ const ProhlizecPage : NextPage = () => {
         <Obsah>
             <Menu />
 
-            <Nadpis>Prohlížeč kluboven</Nadpis>
-
-            <Klubovna />
-            <Klubovna />
+            <Nadpis>Info o klubovně *název klubovny*</Nadpis>
         </Obsah>
 
     </Container>
@@ -47,4 +42,4 @@ const ProhlizecPage : NextPage = () => {
     </>;
 }
 
-export default ProhlizecPage;
+export default DetailKlubovnyPage;

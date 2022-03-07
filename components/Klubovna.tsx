@@ -1,94 +1,114 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { Kalendar } from "./Kalendar";
 
 const Container = styled.div`
-    position: relative;
+    margin-top: 3rem;
+    background-color:  #D3BFA0;
     padding: 1rem;
-    border: solid 1px black;
-    margin-top: 1.5rem;
-    background-color: #BDD4DF;
     border: solid 1px #657F6F;
     border-radius: 1rem;
-    
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 4fr;
-    grid-template-areas:
-        "img title cal"
-        "img desc cal";
+    width: 80vw;
+
+    display: flex;
+    flex-direction: column;
 `;
 
-const Img = styled.img`
-    grid-area: img;
-    height: 15vh;
-    width: 15vh;
-`;
-
-const Ttl = styled.h3`
-    grid-area: title;
-    height: 3vh;
-    min-width: 300px;
-    margin: 0;
+const Title = styled.h2`
     text-align: center;
 `;
 
-const Cal = styled.div`
-    border: solid 1px black;
-    grid-area: cal;
-    height: 15vh;
-    width: 15vh;
+const DescriptionContainer = styled.div`
+    display: flex;
 `;
 
-const Desc = styled.div`
+const Image = styled.img`
+    flex-grow: 1;
+    width: 10%;
+    padding: 1rem;
+`;
+
+const CalendarContainer = styled.div`
+    flexGrow: 1;
+    padding-right: 2rem;
+`;
+
+const DescriptionStyle = styled.div`
+    flex-grow: 3;
+    padding: 1rem;
+    max-width: 45vw;
+    margin: 0;
+    padding: 0;
+    
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "title desc";
+`;
+
+const DescTitle = styled.p`
+    grid-area: title;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    
+    margin: 0;
+    padding: .5rem;
+`;
+
+const DescText = styled.p`
     grid-area: desc;
-    height: 12vh;
-    min-width: 300px
+
+    
+    margin: 0;
+    padding: .5rem;
 `;
 
-const Info = styled.p`
-    margin: .5rem;
+const Error = styled.h3`
+    text-align: center;
+    background-color: #d5ada4;
+    color: #EA614A;
+    width: 60%;
+    margin: 3rem auto;
+    padding: .5rem;
+    border: solid 1px #A87A93;
+    border-radius: .5rem;
+    height: 3rem;
 `;
 
-const Obrazek = () => {
-    return <>
-    <Img src="/logo.svg" />
-    </>;
-}
+const Description = (props : any) => {
+    if(props.title == null)
+    {
+        return <Error>Error: Musíš zadat název položky!</Error>
+    }
 
-const Title = () => {
-    return <>
-    <Ttl>
-        Název klubovny
-    </Ttl>
-    </>;
-}
-
-const Description = () => {
-    return <>
-    <Desc>
-        <Info>Popis: Popis klubovny</Info>
-        <Info><Link href="https://example.com">Web: www.naseklubovna.cz</Link></Info>
-    </Desc>
-    </>;
-}
-
-const Calendar = () => {
-    return <>
-    <Cal>
-        Calendar
-    </Cal>
-    {/*<Calendar/>*/}
-    </>;
+    return <DescriptionStyle>
+        <DescTitle>{props.title}:</DescTitle>
+        <DescText>{props.children}</DescText>
+    </DescriptionStyle>
 }
 
 export const Klubovna = () => {
     return <>
     
     <Container>
-        <Obrazek />
-        <Title />
-        <Description />
-        <Calendar />
+    <Link href="./detailKlubovny"><Title>Klubovna</Title></Link>
+        <DescriptionContainer>
+            <Image src="./logo.svg" />
+            <div>
+                <Description title="Popis">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, nemo dicta? Quaerat maiores facere assumenda sit asperiores ipsam beatae, sint expedita impedit exercitationem magnam culpa accusamus, provident quo adipisci minus?</Description>
+                <Description title="Web">pepazdepa@bezvamail.cz</Description>
+                <Description title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Description>
+            </div>
+            <CalendarContainer><Kalendar /></CalendarContainer>
+            
+        </DescriptionContainer>
+        
     </Container>
 
     </>;

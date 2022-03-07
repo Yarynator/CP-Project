@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const Item = styled.ul`
     display: flex;
+    margin-right: 2rem;
 
     li{
         margin-left: 1rem;
