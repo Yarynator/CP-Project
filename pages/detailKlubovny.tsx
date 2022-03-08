@@ -23,6 +23,10 @@ const Nadpis = styled.h1`
     font-size: 4rem;
 `;
 
+const Name = styled.span`
+    color: red;
+`;
+
 const DetailKlubovnyPage : NextPage = () => {
     return <>
     
@@ -34,7 +38,7 @@ const DetailKlubovnyPage : NextPage = () => {
         <Obsah>
             <Menu />
 
-            <Nadpis>Info o klubovně *název klubovny*</Nadpis>
+            <Nadpis>Info o klubovně <Name>*název klubovny*</Name></Nadpis>
         </Obsah>
 
     </Container>

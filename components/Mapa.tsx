@@ -10,7 +10,7 @@ export const Mapa : React.FC = () => {
         longitude: 15.3386383,
         zoom: 7,
         width: "100vw",
-        height: "100vh"
+        height: "80vh"
     })
 
     //TODO
@@ -20,7 +20,10 @@ export const Mapa : React.FC = () => {
     }, [, setWidth]);
 
     return <>
-            <ReactMapGL 
+            <ReactMapGL style={{
+                position: "relative",
+                bottom: 0
+            }}
                 {...viweport} 
                 mapboxApiAccessToken="pk.eyJ1IjoieWFyeW5hdG9yIiwiYSI6ImNreWtuaW0wMTBmZzYybnBuMmpoMWR6cTcifQ.1nyUrqUwVQ6LmJsyf6_nMw"
                 mapStyle="mapbox://styles/yarynator/ckykny3sp6a6514qpyf59hild"

@@ -71,7 +71,7 @@ const Arrow = styled.div`
 
 export const Kalendar = () => {
     const [value, setValue] = useState(moment());
-    const [calendar, setCalendar] = useState([]);
+    const [calendar, setCalendar] = useState([] as Array<Array<moment.Moment>>);
 
     const startDay = value.clone().startOf("month").startOf("week");
     const endDay = value.clone().endOf("month").endOf("week");

@@ -93,17 +93,39 @@ const Description = (props : any) => {
     </DescriptionStyle>
 }
 
-export const Klubovna = () => {
+export type DescriptionProp = {
+    id: number,
+    name: string,
+    text: string
+}
+
+export type KlubovnaProp = {
+    id: number,
+    name: string,
+    Description: Array<DescriptionProp>
+}
+
+interface Props{
+    klubovna: KlubovnaProp
+}
+
+export const Klubovna : React.FC<Props> = (props) => {
     return <>
     
     <Container>
-    <Link href="./detailKlubovny"><Title>Klubovna</Title></Link>
+    <Link href={`./detailKlubovny?id=${props.klubovna.id}`}><Title>{props.klubovna.name}</Title></Link>
         <DescriptionContainer>
             <Image src="./logo.svg" />
             <div>
-                <Description title="Popis">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, nemo dicta? Quaerat maiores facere assumenda sit asperiores ipsam beatae, sint expedita impedit exercitationem magnam culpa accusamus, provident quo adipisci minus?</Description>
+                {/*<Description title="Popis">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, nemo dicta? Quaerat maiores facere assumenda sit asperiores ipsam beatae, sint expedita impedit exercitationem magnam culpa accusamus, provident quo adipisci minus?</Description>
                 <Description title="Web">pepazdepa@bezvamail.cz</Description>
-                <Description title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Description>
+                <Description title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Description>*/}
+
+                {
+                    props.klubovna.Description.map((descProp) => 
+                        <Description title={descProp.name}>{descProp.text}</Description>
+                    )
+                }
             </div>
             <CalendarContainer><Kalendar /></CalendarContainer>
             
