@@ -10,7 +10,7 @@ export const Mapa : React.FC = () => {
         longitude: 15.3386383,
         zoom: 7,
         width: "100vw",
-        height: "80vh"
+        height: "100vh"
     })
 
     //TODO

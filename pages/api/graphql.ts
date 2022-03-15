@@ -8,26 +8,15 @@ import {
     NextApiResponse,
   } from 'next';
   
-  // import { mutations } from '../../serverApi/mutations/mutations';
-  // import { queries } from '../../serverApi/queries/queries';
-  // import { resolvers } from '../../serverApi/resolvers';
-  const typeDefs = gql`
-    type Query {
-      users: [User!]!
-    }
-    type User {
-      name: String
-    }
-  `;
-  const resolvers = {
-    Query: {
-      users(parent:any, args:any, context:any) {
-        return [{ name: "Nextjs" }];
-      },
-    },
-  };
+  //import { resolvers } from '../../serverApi/resorvers';
+  //import { typeDefs } from "../../serverApi/types";
+  import { mutations } from '../../serverApi/mutations/mutations';
+  import { queries } from '../../serverApi/queries/queries';
+  import { resolvers } from '../../serverApi/resorvers';
+
   
-  const apolloServer = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]});
+  
+  const apolloServer = new ApolloServer({ typeDefs: [mutations, queries], resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]});
   const startServer = apolloServer.start();
   const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");

@@ -105,10 +105,10 @@ const Submit = styled.input`
     padding: 1rem;
 `;
 
-function createInputField(idName: string, name: string, placeholder: string, required: boolean)
+function createInputField(idName: string, name: string, placeholder: string, required: boolean, type: string)
 {
     return <>
-    <InputField><Nazev htmlFor={idName}>{name}{required ? <Required>*</Required> : ""}: </Nazev><Pole id={idName} name={idName} placeholder={placeholder}/></InputField>
+    <InputField><Nazev htmlFor={idName}>{name}{required ? <Required>*</Required> : ""}: </Nazev><Pole id={idName} name={idName} type={type} placeholder={placeholder}/></InputField>
     </>
 }
 
@@ -116,8 +116,8 @@ export const Login = () => {
     return <>
     <AuthDiv>
         <Title>Login</Title>
-        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true)}
-        {createInputField("password", "Heslo", "Heslo", true)}
+        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true, "text")}
+        {createInputField("password", "Heslo", "Heslo", true, "password")}
         <Link href="mojeKlubovna"><Submit type="submit" value="Přihlásit se"/></Link>
     </AuthDiv>
     
@@ -129,13 +129,16 @@ export const Register = () => {
     
     <AuthDiv>
         <Title>Register</Title>
-        {createInputField("name", "Jméno", "Karel", true)}
-        {createInputField("nickname", "Přezdívka", "Tank", false)}
-        {createInputField("surname", "Příjmení", "Klíma", true)}
-        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true)}
-        {createInputField("password", "Heslo", "Heslo", true)}
-        {createInputField("passwordAgain", "Heslo znovu", "Heslo znovu", true)}
-        <Submit type="submit" value="Zaregistrovat se" />
+        {createInputField("name", "Jméno", "Karel", true, "text")}
+        {createInputField("nickname", "Přezdívka", "Tank", false, "text")}
+        {createInputField("surname", "Příjmení", "Klíma", true, "text")}
+        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true, "text")}
+        {createInputField("password", "Heslo", "Heslo", true, "password")}
+        {createInputField("passwordAgain", "Heslo znovu", "Heslo znovu", true, "password")}
+        <Submit type="submit" value="Zaregistrovat se" onClick={() => {
+            
+        }
+        }/>
     </AuthDiv>
     </>;
 };
