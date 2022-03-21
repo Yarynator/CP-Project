@@ -5,6 +5,9 @@ import { Menu } from '../components/Menu'
 import styles from '../styles/Home.module.css'
 import styled from "styled-components";
 import Link from 'next/link'
+import { useEffect } from 'react'
+import "../utils/users";
+import { getUsers } from '../utils/users'
 
 const Odkaz = styled.span`
     color: #657F6F;
@@ -49,6 +52,11 @@ const Tip = styled.h3`
 `;
 
 const Home: NextPage = () => {
+  useEffect(() => {
+      getUsers();
+  });
+
+
   return (
     <Container>
       <Head>
