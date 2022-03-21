@@ -1,7 +1,17 @@
+import { GetUsers } from "../../firestore/firestore";
+
 export type User = {
-    name: string;
-    id: string;
-  }
-  export const users = async (_parent: any, _args: any, context: any): Promise<User[]> => {
-    return [{name: 'Pepa', id: '1'}, {name: 'Eva', id: '2'}]
-  }
+  ID: number,
+  name: String,
+  nickname?: String,
+  surname: String,
+  email: String,
+  password: String,
+  clubhouses: Array<number>,
+  favourites: Array<number>
+}
+
+export const users = async (_parent: any, _args: any, context: any): Promise<User[]> => {
+    //return [{name: 'Pepa', ID: 1, surname: "Novak", email: "novak@bezvamail.cz", password: "abcd", clubhouses: [5], favourites: [6]}, {name: 'Eva', ID: 2, surname: "Novak", email: "novak@bezvamail.cz", password: "abcd", clubhouses: [5], favourites: [6]}]
+    return GetUsers();
+}

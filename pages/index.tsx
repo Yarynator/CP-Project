@@ -1,13 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Menu } from '../components/Menu'
 import styles from '../styles/Home.module.css'
 import styled from "styled-components";
 import Link from 'next/link'
-import { useEffect } from 'react'
-import "../utils/users";
-import { getUsers } from '../utils/users'
 
 const Odkaz = styled.span`
     color: #657F6F;
@@ -25,7 +21,7 @@ const Obsah = styled.main`
 
 const Container = styled.div`
   padding: 0 2rem;
-  background-color: #F6EBD8
+  background-color: #F6EBD8;
 `;
 
 const Nadpis = styled.h1`
@@ -48,14 +44,10 @@ const Tip = styled.h3`
     background-color: #ECDCAF;
     padding: .7rem;
     border: solid 1px #A38456;
-    border-radius:1rem
+    border-radius:1rem;
 `;
 
 const Home: NextPage = () => {
-  useEffect(() => {
-      getUsers();
-  });
-
 
   return (
     <Container>

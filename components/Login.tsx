@@ -2,63 +2,13 @@ import { useState } from "react";
 import styles from "../styles/Menu.module.css";
 import styled from "styled-components";
 import Link from "next/link";
-
-/*export const Login : React.FC = () => {
-
-    const [loginClasses, setLoginClasses] = useState(`${styles.login} ${styles.invisible}`);
-
-    return <>
-    <p className={styles.logContainer} onClick={() => {
-        if(loginClasses == `${styles.login} ${styles.visible}`){
-            setLoginClasses(`${styles.login} ${styles.invisible}`)
-        } else{
-            setLoginClasses(`${styles.login} ${styles.visible}`);
-        }
-    }}>Login</p>
-
-    <div className={loginClasses}>
-        <h2 className={styles.close} onClick={() => setLoginClasses(`${styles.login} ${styles.invisible}`)}>×</h2>
-        <h2>Login</h2>
-        <label htmlFor="email">E-mail: </label>
-        <input type="email" id="email"/><br />
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password"/><br />
-        <button>Přihlásit se</button>
-    </div>
-
-    </>;
-} 
-
-export const Register : React.FC = () => {
-
-    const [registerClasses, setRegisterClasses] = useState(`${styles.register} ${styles.invisible}`);
-
-    return <><p className={styles.logContainer} onClick={() => {
-        if(registerClasses == `${styles.register} ${styles.visible}`){
-            setRegisterClasses(`${styles.register} ${styles.invisible}`)
-        } else{
-            setRegisterClasses(`${styles.register} ${styles.visible}`);
-        }
-    }}>Register</p>
-    
-    <div className={registerClasses}>
-        <h2 className={styles.close} onClick={() => setRegisterClasses(`${styles.register} ${styles.invisible}`)}>×</h2>
-        <h2>Register</h2>
-        <label htmlFor="email">E-mail: </label>
-        <input type="email" id="email"/><br />
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password"/><br />
-        <button>Přihlásit se</button>
-    </div>
-
-    </>
-}*/
+import { AddUser, GetUsers } from "../firestore/firestore";
 
 const Required = styled.span`
     color: red;
 `;
 
-const AuthDiv = styled.div`
+const AuthDiv = styled.form`
     background-color:  #BDD4DF;
     padding: 1rem;
     border: solid 1px #657F6F;
@@ -87,7 +37,7 @@ const Nazev = styled.label`
     display: block;
     float: left;
     text-align: right;
-    padding-right: 1rem
+    padding-right: 1rem;
 `;
 
 const Pole = styled.input`
@@ -127,7 +77,10 @@ export const Login = () => {
 export const Register = () => {
     return <>
     
-    <AuthDiv>
+    <AuthDiv onSubmit={(e) => {
+            e.preventDefault(); 
+            GetUsers();
+        }}>
         <Title>Register</Title>
         {createInputField("name", "Jméno", "Karel", true, "text")}
         {createInputField("nickname", "Přezdívka", "Tank", false, "text")}
@@ -135,10 +88,7 @@ export const Register = () => {
         {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true, "text")}
         {createInputField("password", "Heslo", "Heslo", true, "password")}
         {createInputField("passwordAgain", "Heslo znovu", "Heslo znovu", true, "password")}
-        <Submit type="submit" value="Zaregistrovat se" onClick={() => {
-            
-        }
-        }/>
+        <Submit type="submit" value="Zaregistrovat se" />
     </AuthDiv>
     </>;
 };
