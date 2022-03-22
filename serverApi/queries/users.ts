@@ -1,5 +1,4 @@
 import { GetUsers } from "../../firestore/firestore";
-import { Clubhouse } from "./clubhouses";
 
 export type User = {
   ID: String,
@@ -8,7 +7,7 @@ export type User = {
   surname: String,
   email: String,
   password: String,
-  clubhouses?: Array<Clubhouse>,
+  clubhouses?: Array<number>,
   favourites?: Array<number>
 }
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AddUser, GetUsers } from "../firestore/firestore";
 import { User } from "../serverApi/queries/users";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
 
 const Required = styled.span`
     color: red;
@@ -69,12 +70,44 @@ function createInputField(idName: string, name: string, placeholder: string, req
 }
 
 export const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [warning, setWarning] = useState("");
+
+    const router = useRouter();
+
     return <>
     <AuthDiv>
         <Title>Login</Title>
-        {createInputField("email", "E-mail", "karelklima@bezvamail.cz", true, "text")}
-        {createInputField("password", "Heslo", "Heslo", true, "password")}
-        <Link href="mojeKlubovna"><Submit type="submit" value="Přihlásit se"/></Link>
+        <InputField>
+            <Nazev htmlFor="email">E-mail <Required>*</Required></Nazev>
+            <Pole id="email" type="text" placeholder="karelklima@bezvamail.cz" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </InputField>
+        <InputField>
+            <Nazev htmlFor="password">Heslo <Required>*</Required></Nazev>
+            <Pole id="password" type="password" placeholder="Heslo" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </InputField>
+        <Warning>{warning}</Warning>
+        <Submit type="submit" value="Přihlásit se" onClick={() => {
+            {
+                
+                let validace = true;
+
+                if(email.length === 0 || password.length === 0)
+                    validace = false;
+    
+                if(validace) {
+                    localStorage.setItem("user", "Yarynator");
+                    router.push(router.route);
+
+                    setWarning("");
+                }
+                else{
+                    setWarning("Musis zadat vsecny povinne hodnoty");
+                }
+            }
+        }}/>
     </AuthDiv>
     
     </>;
