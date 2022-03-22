@@ -1,7 +1,7 @@
 import React from "react";
 import { initializeApp } from "firebase/app";
-import { getDocs, addDoc, collection, getFirestore, DocumentReference } from "firebase/firestore";
-import { v4 as uuid } from "uuid";
+import { getDocs, addDoc, collection, getFirestore, DocumentReference, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+import { User } from "../serverApi/queries/users";
 
 const firebaseConfig = initializeApp({
     apiKey: "AIzaSyB9Z_yYUhm8ayl5D_K8UlNdGkVjcIY4ZjA",
@@ -15,17 +15,6 @@ const firebaseConfig = initializeApp({
 
 const db = getFirestore();
 
-export type User = {
-    ID: number,
-    name: String,
-    nickname?: String,
-    surname: String,
-    email: String,
-    password: String,
-    clubhouses: Array<number>,
-    favourites: Array<number>
-}
-
 export const AddUser= async (user: User) => {
     
     /*db.collection("Users").add({
@@ -34,13 +23,11 @@ export const AddUser= async (user: User) => {
         email: "randommail@bezvamail.cz"
     });*/
 
-    let myuuid = uuid();
-
     try {
         const docRef = await addDoc(collection(db, "Users"), {
-            ID: myuuid,
+            ID: user.ID,
             name: user.name,
-            nickname: user.nickname,
+            nickname: user.nickname === "" ? null : user.nickname,
             surname: user.surname,
             password: user.password,
             email: user.email,
@@ -58,11 +45,19 @@ export const GetUsers = async () => {
     const users = [];
 
     const querySnapshot = await getDocs(collection(db, "Users"));
+
     querySnapshot.forEach((doc) => {
         //console.log(doc.data());
         //console.log(`${doc.id} => ${doc.data()}`);
-        users.push(doc.data);
+        users.push(doc.data());
     });
 
+    /*users = querySnapshot.map((doc : any) => {
+        //console.log(doc.data());
+        //console.log(`${doc.id} => ${doc.data()}`);
+        doc.data;
+    })*/
+
+    //console.log(users);
     return await users;
 }

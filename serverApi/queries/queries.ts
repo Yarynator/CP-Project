@@ -11,13 +11,18 @@ export const queries = gql`
   }
  
   type User {
-    ID: Int!
+    ID: String!
     name: String!
     nickname: String
     surname: String!
+    email: String!  
     password: String!
-    clubhouses: [Int!]!
-    favourites: [Int!]!
+    clubhouses: [Clubhouse]
+    favourites: [Int]
+  }
+
+  type Clubhouse {
+    ID: String!
   }
   
   enum LOCALE {
