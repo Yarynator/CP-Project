@@ -1,6 +1,6 @@
 import { GetUsers } from "../../firestore/firestore";
 
-export type User = {
+type User = {
   ID: String,
   name: String,
   nickname?: String,
@@ -16,3 +16,9 @@ export const users = async (_parent: any, _args: any, context: any): Promise<Use
     
     return GetUsers();
 }
+
+
+/*export const users = (_parent: any, _args: any, context: any): Promise<User[]> => {
+  return [{ID}];
+  
+}*/
