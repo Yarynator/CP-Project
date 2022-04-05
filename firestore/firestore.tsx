@@ -2,6 +2,7 @@ import React from "react";
 import { initializeApp } from "firebase/app";
 import { getDocs, addDoc, collection, getFirestore, DocumentReference, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { User } from "../serverApi/queries/users";
+import { Clubhouse } from "../serverApi/queries/clubhouses";
 
 const firebaseConfig = initializeApp({
     apiKey: "AIzaSyB9Z_yYUhm8ayl5D_K8UlNdGkVjcIY4ZjA",
@@ -42,7 +43,7 @@ export const AddUser= async (user: User) => {
 
 export const GetUsers = async () => {
 
-    const users = [];
+    const users= [];
 
     const querySnapshot = await getDocs(collection(db, "Users"));
 
@@ -60,4 +61,36 @@ export const GetUsers = async () => {
 
     //console.log(users);
     return await users;
+}
+
+export const AddClubhouse = async (clubhouse: Clubhouse) => {
+
+    try {
+        const docRef = await addDoc(collection(db, "Clubhouses"), {
+            ID: clubhouse.ID,
+            name: clubhouse.name,
+            img: clubhouse.img,
+            description: clubhouse.description,
+            web: clubhouse.web,
+            street: clubhouse.street,
+            city: clubhouse.city,
+            zip: clubhouse.zip
+        });
+        console.log("Document written with ID: ", docRef.id);
+    } catch(e) {
+        console.error("Error adding document: ", e);
+    }
+}
+
+export const GetClubhouses = async () => {
+    const clubhouses = [];
+
+    const querySnapshot = await getDocs(collection(db, "Clubhouses"));
+
+    querySnapshot.forEach((doc) => {
+        clubhouses.push(doc.data());
+    })
+
+    console.log(clubhouses);
+    return await clubhouses;
 }

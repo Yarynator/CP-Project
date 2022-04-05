@@ -36,7 +36,7 @@ export const Menu = () => {
     const router = useRouter();
     
     useEffect(() => {
-        setUser(localStorage.getItem("user") == null ? "" : localStorage.getItem("user"));
+        setUser(sessionStorage.getItem("name") == null ? "" : sessionStorage.getItem("name"));
     })
 
     if(user === "") {
@@ -119,7 +119,11 @@ export const Menu = () => {
                         <Link href="./mojeKlubovna"><li>Moje klubovna</li></Link>
                         <li>Profil</li>
                         <li onClick={() => {
-                                localStorage.removeItem("user");
+                                sessionStorage.removeItem("ID");
+                                sessionStorage.removeItem("name");
+                                sessionStorage.removeItem("surname");
+                                sessionStorage.removeItem("nickname");
+                                sessionStorage.removeItem("email");
                                 setUser("");
                                 router.push("/");
                             }}>Odhlásit se</li>

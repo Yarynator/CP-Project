@@ -1,14 +1,14 @@
 import { GetUsers } from "../../firestore/firestore";
 
-type User = {
+export type User = {
   ID: String,
   name: String,
   nickname?: String,
   surname: String,
   email: String,
   password: String,
-  clubhouses?: Array<number>,
-  favourites?: Array<number>
+  clubhouses?: Array<String>,
+  favourites?: Array<String>
 }
 
 export const users = async (_parent: any, _args: any, context: any): Promise<User[]> => {

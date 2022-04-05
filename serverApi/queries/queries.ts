@@ -8,6 +8,7 @@ export const queries = gql`
   type Query {
     users: [User!]!
     locales: [LOCALE!]!    
+    clubhouses: [Clubhouses!]!
   }
  
   type User {
@@ -17,8 +18,19 @@ export const queries = gql`
     surname: String!
     email: String!  
     password: String!
-    clubhouses: [Int]
-    favourites: [Int]
+    clubhouses: [String]
+    favourites: [String]
+  }
+
+  type Clubhouses {
+    ID: String!
+    name: String!
+    img: String!
+    description: String!
+    web: String!
+    street: String!
+    city: String!
+    zip: String!
   }
 
   type Clubhouse {

@@ -5,6 +5,15 @@ export const localesQuery = gql`
         locales
     }
     query users {
-        users
+        users {
+            ID
+            name
+            surname
+            nickname
+            email
+            password
+            clubhouses
+            favourites
+        }
     }
 `

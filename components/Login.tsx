@@ -2,10 +2,11 @@ import { useState } from "react";
 import styles from "../styles/Menu.module.css";
 import styled from "styled-components";
 import Link from "next/link";
-import { AddUser, GetUsers } from "../firestore/firestore";
+import { AddUser } from "../firestore/firestore";
 import { User } from "../serverApi/queries/users";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
+import { useUsersQuery } from "../generated/graphql";
 
 const Required = styled.span`
     color: red;
@@ -75,6 +76,8 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [warning, setWarning] = useState("");
 
+    const {loading, data, error} = useUsersQuery();
+
     const router = useRouter();
 
     return <>
@@ -99,9 +102,48 @@ export const Login = () => {
     
                 if(validace) {
                     localStorage.setItem("user", "Yarynator");
-                    router.push(router.route);
 
-                    setWarning("");
+                    let found = false;
+                    let id = "";
+                    let name = "";
+                    let surname = "";
+                    let nickname = "";
+                    let dbPass = "";
+
+                    data?.users.map(e => {
+                        if(!found){
+                            if(email === e.email)
+                            {
+                                found = true;
+                                id = e.ID;
+                                name = e.name;
+                                surname = e.surname;
+                                nickname = e.nickname ? e.nickname : "";
+                                dbPass = e.password;
+                            }
+                        }   
+                    });
+
+                    if(found)
+                    {
+                        if(password === dbPass) {
+                            sessionStorage.setItem("ID", id);
+                            sessionStorage.setItem("name", name);
+                            sessionStorage.setItem("surname", surname);
+                            sessionStorage.setItem("nickname", nickname);
+                            sessionStorage.setItem("email", email);
+
+                            setWarning("");
+                    
+                            router.push(router.route);
+                        } else {
+                            setWarning("Špatné heslo");
+                        }
+                    } else {
+                        setWarning("Špatný email")
+                    }
+                    
+                    //router.push(router.route);
                 }
                 else{
                     setWarning("Musis zadat vsecny povinne hodnoty");

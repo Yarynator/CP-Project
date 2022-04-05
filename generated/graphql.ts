@@ -23,6 +23,17 @@ export type Clubhouse = {
   readonly ID: Scalars['String'];
 };
 
+export type Clubhouses = {
+  readonly ID: Scalars['String'];
+  readonly city: Scalars['String'];
+  readonly description: Scalars['String'];
+  readonly img: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly street: Scalars['String'];
+  readonly web: Scalars['String'];
+  readonly zip: Scalars['String'];
+};
+
 export enum Locale {
   CS = 'CS',
   EN = 'EN'
@@ -38,6 +49,7 @@ export type MutationUpdateProfileArgs = {
 };
 
 export type Query = {
+  readonly clubhouses: ReadonlyArray<Clubhouses>;
   readonly locales: ReadonlyArray<Locale>;
   readonly users: ReadonlyArray<User>;
 };
@@ -49,9 +61,9 @@ export type UpdateProfileInput = {
 
 export type User = {
   readonly ID: Scalars['String'];
-  readonly clubhouses?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly clubhouses?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly email: Scalars['String'];
-  readonly favourites?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly favourites?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly name: Scalars['String'];
   readonly nickname?: Maybe<Scalars['String']>;
   readonly password: Scalars['String'];
@@ -62,6 +74,11 @@ export type LocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LocalesQuery = { readonly __typename: 'Query', readonly locales: ReadonlyArray<Locale> };
+
+export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UsersQuery = { readonly __typename: 'Query', readonly users: ReadonlyArray<{ readonly __typename: 'User', readonly ID: string, readonly name: string, readonly surname: string, readonly nickname?: string | null | undefined, readonly email: string, readonly password: string, readonly clubhouses?: ReadonlyArray<string | null | undefined> | null | undefined, readonly favourites?: ReadonlyArray<string | null | undefined> | null | undefined }> };
 
 
 export const LocalesDocument = gql`
@@ -96,3 +113,44 @@ export function useLocalesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Lo
 export type LocalesQueryHookResult = ReturnType<typeof useLocalesQuery>;
 export type LocalesLazyQueryHookResult = ReturnType<typeof useLocalesLazyQuery>;
 export type LocalesQueryResult = Apollo.QueryResult<LocalesQuery, LocalesQueryVariables>;
+export const UsersDocument = gql`
+    query users {
+  users {
+    ID
+    name
+    surname
+    nickname
+    email
+    password
+    clubhouses
+    favourites
+  }
+}
+    `;
+
+/**
+ * __useUsersQuery__
+ *
+ * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUsersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUsersQuery(baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+      }
+export function useUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+        }
+export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
+export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
+export type UsersQueryResult = Apollo.QueryResult<UsersQuery, UsersQueryVariables>;
