@@ -40,12 +40,12 @@ export enum Locale {
 }
 
 export type Mutation = {
-  readonly updateProfile?: Maybe<User>;
+  readonly registerUser?: Maybe<User>;
 };
 
 
-export type MutationUpdateProfileArgs = {
-  input: UpdateProfileInput;
+export type MutationRegisterUserArgs = {
+  input: RegisterInput;
 };
 
 export type Query = {
@@ -54,9 +54,15 @@ export type Query = {
   readonly users: ReadonlyArray<User>;
 };
 
-export type UpdateProfileInput = {
-  readonly locale?: InputMaybe<Locale>;
-  readonly name?: InputMaybe<Scalars['String']>;
+export type RegisterInput = {
+  readonly ID: Scalars['String'];
+  readonly clubhouses?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+  readonly email: Scalars['String'];
+  readonly favourites?: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>>>;
+  readonly name: Scalars['String'];
+  readonly nickname?: InputMaybe<Scalars['String']>;
+  readonly password: Scalars['String'];
+  readonly surname: Scalars['String'];
 };
 
 export type User = {

@@ -1,1 +1,1 @@
-export * from "./updateProfile";
+export * from "./registerUser";
