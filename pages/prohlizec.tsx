@@ -5,6 +5,7 @@ import { Kalendar } from "../components/Kalendar";
 import { Klubovna } from "../components/Klubovna";
 import { Menu } from "../components/Menu";
 import { KlubovnaProp } from "../components/Klubovna";
+import { useClubhousesQuery } from "../generated/graphql";
 
 const Container = styled.div`
     background-color: #F6EBD8;
@@ -29,21 +30,18 @@ const Nadpis = styled.h1`
 const ProhlizecPage : NextPage = () => {
 
     const klubovna1 : KlubovnaProp = {
-        id: 0,
+        id: "0",
         name: "Klubovna 1",
         Description: [
             {
-                id: 0,
                 name: "Popis",
                 text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, obcaecati, temporibus, neque quas necessitatibus placeat minima molestiae a quis amet deserunt? Eligendi nesciunt ipsa labore asperiores consequatur ad sit ea."
             },
             {
-                id: 1,
                 name: "Web",
                 text: "klimovoudoli.cz"
             },
             {
-                id: 2,
                 name: "Adresa",
                 text: "Klímovo údolí 52, 530 02 Pardubice"
             }
@@ -51,21 +49,25 @@ const ProhlizecPage : NextPage = () => {
     }
 
     const klubovna2 : KlubovnaProp = {
-        id: 0,
+        id: "0",
         name: "Klubovna 2",
         Description: [
             {
-                id: 0,
                 name: "Popis",
                 text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi esse ab numquam repellat nesciunt excepturi! Iusto consectetur, deserunt dolor alias unde similique labore debitis dolorem voluptatem sit fugit repudiandae neque?"
             },
             {
-                id: 1,
                 name: "Web",
                 text: "kacisovoudoli.cz"
             }
         ]
     }
+
+    const {loading, data, error} = useClubhousesQuery();
+
+    if(loading) return <div>Loading</div>
+
+    if(error) return <div>Error</div>
 
     return <>
     
@@ -78,6 +80,30 @@ const ProhlizecPage : NextPage = () => {
             <Menu />
 
             <Nadpis>Prohlížeč kluboven</Nadpis>
+
+
+            {
+                data?.clubhouses.map(element => {
+
+                    console.log(element);
+
+                    <Klubovna klubovna={{
+                        id: element.ID,
+                        name: element.name,
+                        Description: [
+                            {
+                                name: "Popis",
+                                text: element.description
+                            },
+                            {
+                                name: "Web",
+                                text: element.web
+                            }
+                        ]
+                    }} />
+                })
+            }
+
 
             <Klubovna klubovna={klubovna1} />
             <Klubovna klubovna={klubovna2}/>

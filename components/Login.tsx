@@ -6,7 +6,7 @@ import { AddUser } from "../firestore/firestore";
 import { User } from "../serverApi/queries/users";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
-import { useUsersQuery } from "../generated/graphql";
+import { useRegisterUserMutation, useUsersQuery } from "../generated/graphql";
 
 const Required = styled.span`
     color: red;
@@ -165,6 +165,8 @@ export const Register = () => {
     const [passwordAgain, setPasswordAgain] = useState("");
     const [warning, setWarning] = useState("");
 
+    const [registerUser, {loading: mutationIsLoading}] = useRegisterUserMutation();
+
     return <>
 
     
@@ -208,18 +210,18 @@ export const Register = () => {
                 if(password === passwordAgain) {
                     let myuuid = uuid();
 
-                    const user : User = {
-                        ID: myuuid,
-                        name: name,
-                        nickname: nickname,
-                        surname: surname,
-                        email: email,
-                        password: password,
-                        clubhouses: [],
-                        favourites: []
-                    }
-
-                    AddUser(user);
+                    registerUser({
+                        variables: {
+                            id: myuuid,
+                            name: name,
+                            nickname: nickname,
+                            surname: surname,
+                            email: email,
+                            password: password,
+                            clubhouses: [],
+                            favourites: []
+                        }
+                    })
 
                     setName("");
                     setNickname("");

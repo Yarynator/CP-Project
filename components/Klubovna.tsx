@@ -94,13 +94,12 @@ const Description = (props : any) => {
 }
 
 export type DescriptionProp = {
-    id: number,
     name: string,
     text: string
 }
 
 export type KlubovnaProp = {
-    id: number,
+    id: string,
     name: string,
     Description: Array<DescriptionProp>
 }
