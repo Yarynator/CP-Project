@@ -28,6 +28,7 @@ export const localesQuery = gql`
             street
             city
             zip
+            admins
         }
     }
     mutation registerUser($id: String!, $name: String!, $nickname: String, $surname: String!, $email: String!, $password: String!, $clubhouses: [String], $favourites: [String])
@@ -42,6 +43,13 @@ export const localesQuery = gql`
             password
             clubhouses
             favourites
+        }
+    }
+    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!)
+    {
+        addClubhouse(input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip})
+        {
+            ID
         }
     }
 `

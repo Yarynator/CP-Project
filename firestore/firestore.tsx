@@ -43,23 +43,13 @@ export const AddUser= async (user: User) => {
 
 export const GetUsers = async () => {
 
-    const users= [];
+    const users : any = [];
 
     const querySnapshot = await getDocs(collection(db, "Users"));
 
     querySnapshot.forEach((doc) => {
-        //console.log(doc.data());
-        //console.log(`${doc.id} => ${doc.data()}`);
         users.push(doc.data());
     });
-
-    /*users = querySnapshot.map((doc : any) => {
-        //console.log(doc.data());
-        //console.log(`${doc.id} => ${doc.data()}`);
-        doc.data;
-    })*/
-
-    //console.log(users);
     return await users;
 }
 
@@ -83,14 +73,12 @@ export const AddClubhouse = async (clubhouse: Clubhouse) => {
 }
 
 export const GetClubhouses = async () => {
-    const clubhouses = [];
+    const clubhouses : any = [];
 
     const querySnapshot = await getDocs(collection(db, "Clubhouses"));
 
     querySnapshot.forEach((doc) => {
         clubhouses.push(doc.data());
     })
-
-    console.log(clubhouses);
     return await clubhouses;
 }

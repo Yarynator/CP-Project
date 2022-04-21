@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Kalendar } from "./Kalendar";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import Link from "next/link";
 
 const KlubovnaStyle = styled.div`
@@ -68,10 +67,6 @@ const Error = styled.h3`
     border-radius: .5rem;
 `;
 
-const Icon = styled.div`
-    margin-top: 1rem;
-`;
-
 const Cal = () => {
     return <>
         <Kalendar />
@@ -118,9 +113,5 @@ export const MojeKlubovna = () => {
             <Cal />
             <Description />
         </KlubovnaStyle>
-
-        <Icon>
-            <Link href="./novaKlubovna"><AiOutlinePlusCircle /></Link>
-        </Icon>
     </>;
 };

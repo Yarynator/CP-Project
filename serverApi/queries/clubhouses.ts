@@ -8,7 +8,8 @@ export type Clubhouse = {
   web: String,
   street: String,
   city: String,
-  zip: String
+  zip: String,
+  admins?: Array<String>
 }
 
 export const clubhouses = async (_parent: any, _args: any, context: any): Promise<Clubhouse[]> => {

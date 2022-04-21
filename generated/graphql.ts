@@ -23,8 +23,20 @@ export type Clubhouse = {
   readonly ID: Scalars['String'];
 };
 
+export type ClubhouseInput = {
+  readonly ID: Scalars['String'];
+  readonly city: Scalars['String'];
+  readonly description: Scalars['String'];
+  readonly img: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly street: Scalars['String'];
+  readonly web: Scalars['String'];
+  readonly zip: Scalars['String'];
+};
+
 export type Clubhouses = {
   readonly ID: Scalars['String'];
+  readonly admins?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly city: Scalars['String'];
   readonly description: Scalars['String'];
   readonly img: Scalars['String'];
@@ -40,7 +52,13 @@ export enum Locale {
 }
 
 export type Mutation = {
+  readonly addClubhouse?: Maybe<Clubhouse>;
   readonly registerUser?: Maybe<User>;
+};
+
+
+export type MutationAddClubhouseArgs = {
+  input: ClubhouseInput;
 };
 
 
@@ -89,7 +107,7 @@ export type UsersQuery = { readonly __typename: 'Query', readonly users: Readonl
 export type ClubhousesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ClubhousesQuery = { readonly __typename: 'Query', readonly clubhouses: ReadonlyArray<{ readonly __typename: 'Clubhouses', readonly ID: string, readonly name: string, readonly img: string, readonly description: string, readonly web: string, readonly street: string, readonly city: string, readonly zip: string }> };
+export type ClubhousesQuery = { readonly __typename: 'Query', readonly clubhouses: ReadonlyArray<{ readonly __typename: 'Clubhouses', readonly ID: string, readonly name: string, readonly img: string, readonly description: string, readonly web: string, readonly street: string, readonly city: string, readonly zip: string, readonly admins?: ReadonlyArray<string | null | undefined> | null | undefined }> };
 
 export type RegisterUserMutationVariables = Exact<{
   id: Scalars['String'];
@@ -104,6 +122,20 @@ export type RegisterUserMutationVariables = Exact<{
 
 
 export type RegisterUserMutation = { readonly __typename: 'Mutation', readonly registerUser?: { readonly __typename: 'User', readonly ID: string, readonly name: string, readonly nickname?: string | null | undefined, readonly surname: string, readonly email: string, readonly password: string, readonly clubhouses?: ReadonlyArray<string | null | undefined> | null | undefined, readonly favourites?: ReadonlyArray<string | null | undefined> | null | undefined } | null | undefined };
+
+export type AddClubhouseMutationVariables = Exact<{
+  id: Scalars['String'];
+  name: Scalars['String'];
+  img: Scalars['String'];
+  description: Scalars['String'];
+  web: Scalars['String'];
+  street: Scalars['String'];
+  city: Scalars['String'];
+  zip: Scalars['String'];
+}>;
+
+
+export type AddClubhouseMutation = { readonly __typename: 'Mutation', readonly addClubhouse?: { readonly __typename: 'Clubhouse', readonly ID: string } | null | undefined };
 
 
 export const LocalesDocument = gql`
@@ -190,6 +222,7 @@ export const ClubhousesDocument = gql`
     street
     city
     zip
+    admins
   }
 }
     `;
@@ -269,3 +302,45 @@ export function useRegisterUserMutation(baseOptions?: Apollo.MutationHookOptions
 export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMutation>;
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
+export const AddClubhouseDocument = gql`
+    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!) {
+  addClubhouse(
+    input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip}
+  ) {
+    ID
+  }
+}
+    `;
+export type AddClubhouseMutationFn = Apollo.MutationFunction<AddClubhouseMutation, AddClubhouseMutationVariables>;
+
+/**
+ * __useAddClubhouseMutation__
+ *
+ * To run a mutation, you first call `useAddClubhouseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddClubhouseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addClubhouseMutation, { data, loading, error }] = useAddClubhouseMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *      img: // value for 'img'
+ *      description: // value for 'description'
+ *      web: // value for 'web'
+ *      street: // value for 'street'
+ *      city: // value for 'city'
+ *      zip: // value for 'zip'
+ *   },
+ * });
+ */
+export function useAddClubhouseMutation(baseOptions?: Apollo.MutationHookOptions<AddClubhouseMutation, AddClubhouseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddClubhouseMutation, AddClubhouseMutationVariables>(AddClubhouseDocument, options);
+      }
+export type AddClubhouseMutationHookResult = ReturnType<typeof useAddClubhouseMutation>;
+export type AddClubhouseMutationResult = Apollo.MutationResult<AddClubhouseMutation>;
+export type AddClubhouseMutationOptions = Apollo.BaseMutationOptions<AddClubhouseMutation, AddClubhouseMutationVariables>;

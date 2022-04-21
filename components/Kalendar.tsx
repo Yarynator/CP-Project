@@ -119,7 +119,7 @@ export const Kalendar = () => {
         </Header>
         <div>
             <DayNames>
-              {["Ne", "Po", "Út", "St", "Čt", "Pá", "So", "Ne"].map((d) => (
+              {["Ne", "Po", "Út", "St", "Čt", "Pá", "So"].map((d) => (
                   <div>{d}</div>
               ))}
             </DayNames>

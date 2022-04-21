@@ -27,41 +27,14 @@ const Nadpis = styled.h1`
     font-size: 4rem;
 `;
 
+const Icon = styled.div`
+    text-align: center;
+    font-size: large;
+
+    margin-top: 1rem;
+`;
+
 const ProhlizecPage : NextPage = () => {
-
-    const klubovna1 : KlubovnaProp = {
-        id: "0",
-        name: "Klubovna 1",
-        Description: [
-            {
-                name: "Popis",
-                text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, obcaecati, temporibus, neque quas necessitatibus placeat minima molestiae a quis amet deserunt? Eligendi nesciunt ipsa labore asperiores consequatur ad sit ea."
-            },
-            {
-                name: "Web",
-                text: "klimovoudoli.cz"
-            },
-            {
-                name: "Adresa",
-                text: "Klímovo údolí 52, 530 02 Pardubice"
-            }
-        ]
-    }
-
-    const klubovna2 : KlubovnaProp = {
-        id: "0",
-        name: "Klubovna 2",
-        Description: [
-            {
-                name: "Popis",
-                text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi esse ab numquam repellat nesciunt excepturi! Iusto consectetur, deserunt dolor alias unde similique labore debitis dolorem voluptatem sit fugit repudiandae neque?"
-            },
-            {
-                name: "Web",
-                text: "kacisovoudoli.cz"
-            }
-        ]
-    }
 
     const {loading, data, error} = useClubhousesQuery();
 
@@ -83,11 +56,7 @@ const ProhlizecPage : NextPage = () => {
 
 
             {
-                data?.clubhouses.map(element => {
-
-                    console.log(element);
-
-                    <Klubovna klubovna={{
+                data?.clubhouses.map(element => <Klubovna klubovna={{
                         id: element.ID,
                         name: element.name,
                         Description: [
@@ -98,15 +67,16 @@ const ProhlizecPage : NextPage = () => {
                             {
                                 name: "Web",
                                 text: element.web
+                            },
+                            {
+                                name: "Adresa",
+                                text: element.street + ", " + element.zip + " " + element.city
                             }
                         ]
                     }} />
-                })
+                )
             }
 
-
-            <Klubovna klubovna={klubovna1} />
-            <Klubovna klubovna={klubovna2}/>
         </Obsah>
 
     </Container>

@@ -5,7 +5,7 @@ import { Menu } from "../components/Menu";
 import styled from "styled-components";
 
 const Container = styled.div`
-    background-color: #F6EBD8
+    background-color: #F6EBD8;
 `;
 
 const MapaPage : NextPage = () => {
@@ -17,7 +17,7 @@ const MapaPage : NextPage = () => {
         </Head>
 
         <Menu />
-        <Mapa />   
+        {/*<Mapa />*/}   
     </Container>
     
     </>;

@@ -19,10 +19,9 @@ const Obsah = styled.main`
 
 const Nadpis = styled.h1`
     text-align: center;
-    margin: 0;
+    margin: 2 0;
     line-height: 1.15;
     font-size: 4rem;
-    margin-bottom: 2rem;
 `;
 
 const Popis = styled.div`
@@ -33,6 +32,15 @@ const Popis = styled.div`
 
 const Footer = styled.p`
     margin-top: 8rem;
+`;
+
+const Warning = styled.div`
+    background-color: #f8d7da;
+    color: #721c24;
+    border: solid 1px #f5c6cb;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border-radius: 4px;
 `;
 
 const OProjektuPage : NextPage = () => {
@@ -48,6 +56,7 @@ const OProjektuPage : NextPage = () => {
         <Obsah>
             <Nadpis>O projektu</Nadpis>
             <Popis>
+                <Warning>Projekt je ve fázi vývoje! Vetšina částí je zatím nefunkčních!</Warning>
                 <p>Projekt byl vytvořen jako studentský projekt do předmětu Cvičení z programování na škole DELTA - SŠIE v Pardubicích.</p>
                 <h3>O čem projekt je?</h3>
                 <p>Projekt je vytvořen z úmyslem vytvořit portál, který by usnadnil českých skautům rezervaci kluboven.</p>

@@ -1,8 +1,14 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Klubovna } from "../components/Klubovna";
 import { Menu } from "../components/Menu";
 import { MojeKlubovna } from "../components/MojeKlubovna";
+import { useClubhousesQuery } from "../generated/graphql";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import Link from "next/link";
 
 const Container = styled.div`
     background-color: #F6EBD8;
@@ -25,27 +31,119 @@ const Nadpis = styled.h1`
     font-size: 4rem;
 `;
 
+const Warning = styled.div`
+    background-color: #f8d7da;
+    color: #721c24;
+    border: solid 1px #f5c6cb;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+`;
+
+const Icon = styled.div`
+    margin-top: 1rem;
+`;
+
 
 
 const MojeKlubovnaPage : NextPage = () => {
-    return <>
-    
-    <Container>
-        <Head>
-            <title>Moje klubovna</title>
-        </Head>
 
-        <Obsah>
-            <Menu />
+    const router = useRouter();
 
-            <Nadpis>Moje Klubovna</Nadpis>
-            <MojeKlubovna />
-            
-        </Obsah>
+    const [id, setId] = useState<String | null>();
+    const {data, error, loading} = useClubhousesQuery();
 
-    </Container>
-    
-    </>;
+    const klubovny : any[] = [];
+
+    data?.clubhouses.map(element => {
+        if(element.admins?.includes(id))
+        {
+            klubovny.push(element);
+        }
+    });
+
+    console.log(klubovny);
+
+    useEffect(() => {
+        setId(sessionStorage.getItem("ID"));
+    });
+
+    if(id)
+    {
+        if(klubovny.length === 0)
+        {
+            return <>
+                <Container>
+                    <Head>
+                    <title>Moje klubovna</title>
+                    </Head>
+
+                    <Obsah>
+                        <Menu />
+
+                        <Nadpis>Moje Klubovna</Nadpis>
+
+                        <Warning>Zatím nespravuješ žádné klubovny</Warning>
+
+                        <Icon>
+                            <Link href="./novaKlubovna"><AiOutlinePlusCircle /></Link>
+                        </Icon>
+
+                    </Obsah>
+                </Container>
+            </>
+        }
+        return <>
+        
+        <Container>
+            <Head>
+                <title>Moje klubovna</title>
+            </Head>
+
+            <Obsah>
+                <Menu />
+
+                <Nadpis>Moje Klubovna</Nadpis>
+
+                {
+                    klubovny.map(element => <Klubovna klubovna={{
+                        id: element.ID,
+                        name: element.name,
+                        Description: [
+                            {
+                                name: "Popis",
+                                text: element.description
+                            }
+                        ]
+                    }}/>)
+                }
+                
+
+                <Icon>
+                    <Link href="./novaKlubovna"><AiOutlinePlusCircle /></Link>
+                </Icon>
+
+            </Obsah>
+
+        </Container>
+        
+        </>;
+    } else {
+        return <>
+            <Container>
+                <Head>
+                    <title>Moje klubovna</title>
+                </Head>
+
+                <Obsah>
+                    <Menu />
+                    <Warning>Pro přístup ke klubovnám se musíš přihlásit!</Warning>
+
+                </Obsah>
+            </Container>
+        </>
+    }
 }
 
 export default MojeKlubovnaPage;

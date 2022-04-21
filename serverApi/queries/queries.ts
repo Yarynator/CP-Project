@@ -31,6 +31,7 @@ export const queries = gql`
     street: String!
     city: String!
     zip: String!
+    admins: [String]
   }
 
   type Clubhouse {
