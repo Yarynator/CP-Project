@@ -16,9 +16,3 @@ export const clubhouses = async (_parent: any, _args: any, context: any): Promis
     //return[{ID: "fs", name: "Name", img: "img", description: "desc", web: "web", street: "street", city: "city", zip: "zip"}];
     return GetClubhouses();
 }
-
-
-/*export const users = (_parent: any, _args: any, context: any): Promise<User[]> => {
-  return [{ID}];
-  
-}*/

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { AddClubhouse } from "../firestore/firestore";
+//import { AddClubhouse } from "../firestore/firestore";
 import { useAddClubhouseMutation } from "../generated/graphql";
 import { Clubhouse } from "../serverApi/queries";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
+import { useUserContext } from "./userContext";
 
 const Container = styled.td`
     text-align: center;
@@ -44,6 +46,10 @@ export const NovaKlubovna = () => {
 
     const [addClubhouse, {loading: mutationIsLoading}] = useAddClubhouseMutation();
 
+    const { user } = useUserContext();
+
+    const router = useRouter();
+
     return <>
     <table>
         <tr>
@@ -79,18 +85,29 @@ export const NovaKlubovna = () => {
                 <Submit type="submit" value="Přidat klubovnu" onClick={() => {
                     const myuuid = uuid();
 
-                    const clubhouse : Clubhouse = {
-                        ID: myuuid,
-                        name: name,
-                        img: img,
-                        description: description,
-                        web: web,
-                        street: street,
-                        city: city,
-                        zip: zip
-                    }
+                    const admin : string = user?.user.uid ? user?.user.uid : "admin";
 
-                    AddClubhouse(clubhouse);
+                    console.log(admin);
+
+                    addClubhouse({
+                        variables: {
+                            id: myuuid,
+                            name: name,
+                            img: img,
+                            description: description,
+                            web: web,
+                            street: street,
+                            city: city,
+                            zip: zip,
+                            admins: [
+                                admin,
+                            ]
+                        }
+                    })
+
+                    router.push("./mojeKlubovna");
+
+                    //AddClubhouse(clubhouse);
                 }} />
             </Container>
         </tr>

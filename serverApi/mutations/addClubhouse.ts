@@ -9,6 +9,7 @@ type ClubhouseInput = {
     street: String,
     city: String,
     zip: String
+    admins: [String]
 }
 
 export const addClubhouse = async (_parent: any, args: { input: ClubhouseInput }, context: any, _info: any): Promise<Clubhouse> => {
@@ -20,7 +21,8 @@ export const addClubhouse = async (_parent: any, args: { input: ClubhouseInput }
         web: args.input.web,
         street: args.input.street,
         city: args.input.city,
-        zip: args.input.zip
+        zip: args.input.zip,
+        admins: args.input.admins
     }
 
     AddClubhouse(clubhouse);

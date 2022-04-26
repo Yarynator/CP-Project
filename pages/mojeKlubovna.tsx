@@ -9,6 +9,7 @@ import { MojeKlubovna } from "../components/MojeKlubovna";
 import { useClubhousesQuery } from "../generated/graphql";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Link from "next/link";
+import { useUserContext } from "../components/userContext";
 
 const Container = styled.div`
     background-color: #F6EBD8;
@@ -51,25 +52,20 @@ const MojeKlubovnaPage : NextPage = () => {
 
     const router = useRouter();
 
-    const [id, setId] = useState<String | null>();
     const {data, error, loading} = useClubhousesQuery();
 
     const klubovny : any[] = [];
 
+    const { user } = useUserContext();
+
     data?.clubhouses.map(element => {
-        if(element.admins?.includes(id))
+        if(element.admins?.includes(user?.user.uid))
         {
             klubovny.push(element);
         }
     });
 
-    console.log(klubovny);
-
-    useEffect(() => {
-        setId(sessionStorage.getItem("ID"));
-    });
-
-    if(id)
+    if(user)
     {
         if(klubovny.length === 0)
         {

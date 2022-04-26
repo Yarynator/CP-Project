@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Login, Register } from './Login'
 import styled from "styled-components";
 import { useRouter } from 'next/router';
+import { useUserContext } from './userContext';
 
 const Container = styled.div`
     display: flex;
@@ -31,7 +32,9 @@ const Item = styled.ul`
 export const Menu = () => {
 
     const [loginOpened, changeLoginOpened] = useState("none");
-    const [user, setUser] = useState("");
+    const [userr, setUser] = useState("");
+
+    const { user, logout } = useUserContext();
 
     const router = useRouter();
     
@@ -39,7 +42,7 @@ export const Menu = () => {
         setUser(sessionStorage.getItem("name") == null ? "" : sessionStorage.getItem("name"));
     })
 
-    if(user === "") {
+    if(!user) {
         if(loginOpened == "none")
         {
             return<>
@@ -119,12 +122,15 @@ export const Menu = () => {
                         <Link href="./mojeKlubovna"><li>Moje klubovna</li></Link>
                         <li>Profil</li>
                         <li onClick={() => {
-                                sessionStorage.removeItem("ID");
+                                /*sessionStorage.removeItem("ID");
                                 sessionStorage.removeItem("name");
                                 sessionStorage.removeItem("surname");
                                 sessionStorage.removeItem("nickname");
                                 sessionStorage.removeItem("email");
-                                setUser("");
+                                setUser("");*/
+
+                                logout();
+
                                 router.push("/");
                             }}>Odhlásit se</li>
                     </Item>

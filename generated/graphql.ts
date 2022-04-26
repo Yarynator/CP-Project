@@ -25,6 +25,7 @@ export type Clubhouse = {
 
 export type ClubhouseInput = {
   readonly ID: Scalars['String'];
+  readonly admins: ReadonlyArray<Scalars['String']>;
   readonly city: Scalars['String'];
   readonly description: Scalars['String'];
   readonly img: Scalars['String'];
@@ -132,6 +133,7 @@ export type AddClubhouseMutationVariables = Exact<{
   street: Scalars['String'];
   city: Scalars['String'];
   zip: Scalars['String'];
+  admins: ReadonlyArray<Scalars['String']> | Scalars['String'];
 }>;
 
 
@@ -303,9 +305,9 @@ export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMu
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
 export const AddClubhouseDocument = gql`
-    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!) {
+    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!, $admins: [String!]!) {
   addClubhouse(
-    input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip}
+    input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip, admins: $admins}
   ) {
     ID
   }
@@ -334,6 +336,7 @@ export type AddClubhouseMutationFn = Apollo.MutationFunction<AddClubhouseMutatio
  *      street: // value for 'street'
  *      city: // value for 'city'
  *      zip: // value for 'zip'
+ *      admins: // value for 'admins'
  *   },
  * });
  */

@@ -45,9 +45,9 @@ export const localesQuery = gql`
             favourites
         }
     }
-    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!)
+    mutation addClubhouse($id: String!, $name: String!, $img: String!, $description: String!, $web: String!, $street: String!, $city: String!, $zip: String!, $admins: [String!]!)
     {
-        addClubhouse(input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip})
+        addClubhouse(input: {ID: $id, name: $name, img: $img, description: $description, web: $web, street: $street, city: $city, zip: $zip, admins: $admins})
         {
             ID
         }

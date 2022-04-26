@@ -7,6 +7,7 @@ import { User } from "../serverApi/queries/users";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
 import { useRegisterUserMutation, useUsersQuery } from "../generated/graphql";
+import { useUserContext } from "./userContext";
 
 const Required = styled.span`
     color: red;
@@ -78,6 +79,8 @@ export const Login = () => {
 
     const {loading, data, error} = useUsersQuery();
 
+    const { user, login } = useUserContext();
+
     const router = useRouter();
 
     return <>
@@ -101,7 +104,7 @@ export const Login = () => {
                     validace = false;
     
                 if(validace) {
-                    localStorage.setItem("user", "Yarynator");
+                    /*localStorage.setItem("user", "Yarynator");
 
                     let found = false;
                     let id = "";
@@ -143,7 +146,9 @@ export const Login = () => {
                         setWarning("Špatný email")
                     }
                     
-                    //router.push(router.route);
+                    //router.push(router.route);*/
+
+                    login(email, password);
                 }
                 else{
                     setWarning("Musis zadat vsecny povinne hodnoty");
@@ -165,7 +170,9 @@ export const Register = () => {
     const [passwordAgain, setPasswordAgain] = useState("");
     const [warning, setWarning] = useState("");
 
-    const [registerUser, {loading: mutationIsLoading}] = useRegisterUserMutation();
+    const { user, createUser } = useUserContext();
+
+    //const [registerUser, {loading: mutationIsLoading}] = useRegisterUserMutation();
 
     return <>
 
@@ -207,8 +214,8 @@ export const Register = () => {
 
             if(validace)
             {
-                if(password === passwordAgain) {
-                    let myuuid = uuid();
+               if(password === passwordAgain) {
+                    /*let myuuid = uuid();
 
                     registerUser({
                         variables: {
@@ -221,7 +228,9 @@ export const Register = () => {
                             clubhouses: [],
                             favourites: []
                         }
-                    })
+                    })*/
+                    
+                    createUser(email, password);
 
                     setName("");
                     setNickname("");
@@ -229,9 +238,12 @@ export const Register = () => {
                     setEmail("");
                     setPassword("");
                     setPasswordAgain("");
+
                 } else {
                     setWarning("Hesla se musi shodovat");
                 }
+
+                
             }
             else{
                 setWarning("Musis zadat vsecny povinne hodnoty");

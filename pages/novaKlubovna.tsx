@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Menu } from "../components/Menu";
 import { NovaKlubovna } from "../components/novaKlubovna";
+import { useUserContext } from "../components/userContext";
 
 const Container = styled.div`
     background-color: #F6EBD8;
@@ -40,14 +41,10 @@ const MojeKlubovnaPage : NextPage = () => {
 
     const router = useRouter();
 
-    const [id, setId] = useState();
-
-    useEffect(() => {
-        setId(sessionStorage.getItem("ID"));
-    });
+    const { user } = useUserContext();
 
     
-    if(id) {
+    if(user) {
         return <>
         
         <Container>

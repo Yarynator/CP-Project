@@ -64,7 +64,8 @@ export const AddClubhouse = async (clubhouse: Clubhouse) => {
             web: clubhouse.web,
             street: clubhouse.street,
             city: clubhouse.city,
-            zip: clubhouse.zip
+            zip: clubhouse.zip,
+            admins: clubhouse.admins
         });
         console.log("Document written with ID: ", docRef.id);
     } catch(e) {
@@ -80,5 +81,6 @@ export const GetClubhouses = async () => {
     querySnapshot.forEach((doc) => {
         clubhouses.push(doc.data());
     })
+
     return await clubhouses;
 }

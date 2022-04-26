@@ -29,5 +29,6 @@ export const mutations = gql`
     street: String!,
     city: String!,
     zip: String!
+    admins: [String!]!
 }
 `;
