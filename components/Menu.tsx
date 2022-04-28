@@ -14,7 +14,7 @@ const Container = styled.div`
     width: 100vw;
     padding: 1rem;
     z-index: 1;
-    background-color: #F6EBD8;
+    background-color: #fffaf2;
 `;
 
 const Item = styled.ul`

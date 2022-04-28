@@ -23,7 +23,7 @@ const Obsah = styled.main`
 
 const Nadpis = styled.h1`
     text-align: center;
-    margin: 0;
+    margin: 2rem 0;
     line-height: 1.15;
     font-size: 4rem;
 `;
