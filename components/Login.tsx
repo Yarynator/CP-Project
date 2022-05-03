@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import styles from "../styles/Menu.module.css";
 import styled from "styled-components";
 import Link from "next/link";
@@ -13,7 +14,7 @@ const Required = styled.span`
     color: red;
 `;
 
-const AuthDiv = styled.div`
+const AuthDiv = styled.form`
     background-color:  #BDD4DF;
     padding: 1rem;
     border: solid 1px #657F6F;
@@ -82,6 +83,7 @@ export const Login = () => {
     const { user, login } = useUserContext();
 
     const router = useRouter();
+    const { register, handleSubmit, watch, formState: {errors} } = useForm();
 
     return <>
     <AuthDiv>
@@ -229,8 +231,8 @@ export const Register = () => {
                             favourites: []
                         }
                     })*/
-                    
-                    createUser(email, password);
+
+                    console.log(createUser(email, password));
 
                     setName("");
                     setNickname("");

@@ -1,10 +1,11 @@
 import React from "react";
-import { initializeApp } from "firebase/app";
+import { FirebaseApp, initializeApp } from "firebase/app";
 import { getDocs, addDoc, collection, getFirestore, DocumentReference, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { User } from "../serverApi/queries/users";
 import { Clubhouse } from "../serverApi/queries/clubhouses";
+import * as admin from "firebase-admin";
 
-const firebaseConfig = initializeApp({
+export const firebase = initializeApp({
     apiKey: "AIzaSyB9Z_yYUhm8ayl5D_K8UlNdGkVjcIY4ZjA",
     authDomain: "scoutreservator.firebaseapp.com",
     projectId: "scoutreservator",
@@ -15,6 +16,11 @@ const firebaseConfig = initializeApp({
 });
 
 const db = getFirestore();
+
+export const getApp = () => {
+    return admin.instanceId;
+} 
+
 
 export const AddUser= async (user: User) => {
     
@@ -30,8 +36,6 @@ export const AddUser= async (user: User) => {
             name: user.name,
             nickname: user.nickname === "" ? null : user.nickname,
             surname: user.surname,
-            password: user.password,
-            email: user.email,
             clubhouses: user.clubhouses,
             favourites: user.favourites
         });

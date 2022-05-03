@@ -10,8 +10,6 @@ export const localesQuery = gql`
             name
             surname
             nickname
-            email
-            password
             clubhouses
             favourites
         }
@@ -31,9 +29,9 @@ export const localesQuery = gql`
             admins
         }
     }
-    mutation registerUser($id: String!, $name: String!, $nickname: String, $surname: String!, $email: String!, $password: String!, $clubhouses: [String], $favourites: [String])
+    mutation registerUser($id: String!, $name: String!, $nickname: String, $surname: String!, $clubhouses: [String], $favourites: [String])
     {
-        registerUser(input: {ID: $id, name: $name, nickname: $nickname, surname: $surname, email: $email, password: $password, clubhouses: $clubhouses, favourites: $favourites}) 
+        registerUser(input: {ID: $id, name: $name, nickname: $nickname, surname: $surname, clubhouses: $clubhouses, favourites: $favourites}) 
         {
             ID
             name

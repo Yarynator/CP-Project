@@ -5,8 +5,6 @@ export type User = {
   name: String,
   nickname?: String,
   surname: String,
-  email: String,
-  password: String,
   clubhouses?: Array<String>,
   favourites?: Array<String>
 }

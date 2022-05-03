@@ -13,10 +13,19 @@ import {
   import { mutations } from '../../serverApi/mutations/mutations';
   import { queries } from '../../serverApi/queries/queries';
   import { resolvers } from '../../serverApi/resorvers';
+import { verifyToken } from '../../serverApi/lib/VerifyToken';
 
   
   
-  const apolloServer = new ApolloServer({ typeDefs: [mutations, queries], resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]});
+  const apolloServer = new ApolloServer({ typeDefs: [mutations, queries], resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground()], 
+    context: async ({req, res})=>{
+      const authorizationHeader = req.headers.authorization 
+      console.log(authorizationHeader);
+      const context = {
+        user: authorizationHeader ? await verifyToken(req.headers.authorization) : undefined
+    }
+    return context;
+  }});
   const startServer = apolloServer.start();
   const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");

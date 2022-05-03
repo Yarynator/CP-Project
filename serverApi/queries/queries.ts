@@ -16,8 +16,6 @@ export const queries = gql`
     name: String!
     nickname: String
     surname: String!
-    email: String!  
-    password: String!
     clubhouses: [String]
     favourites: [String]
   }

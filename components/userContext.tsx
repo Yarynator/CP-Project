@@ -29,7 +29,7 @@ export type UserContextProps = {
   deleteUser?: (password: string) => Promise<void>;
  
 };
-let auth: Auth;
+export let auth: Auth;
 //@ts-ignore
 const UserContext = React.createContext<UserContextProps>(null);
 const login = async (username: string, password: string) => {
@@ -81,7 +81,7 @@ export const UserContextProvider: React.FC = ({
   useEffect(() => {
     initializeFirebase();
     const unsubscribe = onAuthStateChanged(auth, user => {
-      setUser({ loading: false, user: user ? createFullUser(user) : null });
+      setUser({ loading: false, user: user ? createFullUser(user) : undefined });
       //@ts-ignore - for dev purposes
       window.myLogout = user
         ? () => logout().then(() => console.log('User has logout.'))

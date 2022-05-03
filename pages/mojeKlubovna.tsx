@@ -52,11 +52,11 @@ const MojeKlubovnaPage : NextPage = () => {
 
     const router = useRouter();
 
-    const {data, error, loading} = useClubhousesQuery();
 
     const klubovny : any[] = [];
 
     const { user } = useUserContext();
+    const {data, error, loading} = useClubhousesQuery({skip: !user});
 
     data?.clubhouses.map(element => {
         if(element.admins?.includes(user?.user.uid))
@@ -65,7 +65,7 @@ const MojeKlubovnaPage : NextPage = () => {
         }
     });
 
-    if(user)
+    if(true)
     {
         if(klubovny.length === 0)
         {

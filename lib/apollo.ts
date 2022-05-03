@@ -8,6 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 
 // import 'firebase/compat/auth
 import { isServer } from './utils';
+import { auth } from "../components/userContext";
 
 //source: https://github.com/shshaw/next-apollo-ssr
 
@@ -37,26 +38,26 @@ const httpLink = (): HttpLink => {
   }
 };
 
-// const authLink = setContext(async (req, { headers }) => {
-//   if (typeof window === 'undefined') {
-//     //chceme dělat SSR, jen je třeba volat na SSR metody, které jsou veřejné a nezávisí na userovi
-//     console.log('Authentikaci na serveru, metoda ', req.operationName);
-//     // return the headers to the context so httpLink can read them
-//     return {
-//       headers,
-//     };
-//   }
-//   const user = firebase.auth().currentUser || null;
-//   const jwtToken = user ? await user.getIdToken() : null;
+const authLink = setContext(async (req, { headers }) => {
+  if (typeof window === 'undefined') {
+    //chceme dělat SSR, jen je třeba volat na SSR metody, které jsou veřejné a nezávisí na userovi
+    console.log('Authentikaci na serveru, metoda ', req.operationName);
+    // return the headers to the context so httpLink can read them
+    return {
+      headers,
+    };
+  }
+  const user = auth?.currentUser || null;
+  const jwtToken = user ? await user.getIdToken() : null;
 
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: jwtToken ? `Bearer ${jwtToken}` : '',
-//     },
-//   };
-// });
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: jwtToken ? `Bearer ${jwtToken}` : '',
+    },
+  };
+});
 
 export function getApolloClient(forceNew?: boolean) {
   if (!CLIENT || forceNew) {
@@ -66,7 +67,7 @@ export function getApolloClient(forceNew?: boolean) {
       cache: new InMemoryCache().restore(windowApolloState || {}),
       credentials: 'same-origin',
       link: ApolloLink.from([
-        //authLink,
+        authLink,
         httpLink(),
       ]),
       /**
