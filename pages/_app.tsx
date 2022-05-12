@@ -1,16 +1,20 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { ApolloClient, ApolloProvider } from '@apollo/client'
-import { getApolloClient } from "../lib/apollo";
+import '../styles/globals.css';
+
+import { ApolloProvider } from '@apollo/client';
+import type { AppProps } from 'next/app';
+
 import { UserContextProvider } from '../components/userContext';
+import { getApolloClient } from '../lib/apollo';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const client = getApolloClient();
-  return <ApolloProvider client={client}>
-    <UserContextProvider>
-      <Component {...pageProps} />
-    </UserContextProvider>
-  </ApolloProvider> 
-}
+  return (
+    <ApolloProvider client={client}>
+      <UserContextProvider>
+        <Component {...pageProps} />
+      </UserContextProvider>
+    </ApolloProvider>
+  );
+};
 
-export default MyApp
+export default MyApp;

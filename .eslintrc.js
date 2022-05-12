@@ -100,7 +100,7 @@ module.exports = {
         },
       ],
       'unicorn/filename-case': [
-        'error',
+        'off',
         {
           case: 'kebabCase',
           ignore: ['^use'],
@@ -116,7 +116,7 @@ module.exports = {
     },
     overrides: [
       {
-        files: ['src/pages/**/*.tsx', 'src/pages/api/*.ts'],
+        files: ['pages/**/*.tsx', 'pages/api/*.ts'],
         rules: {
           'import/no-default-export': 'off',
         },

@@ -1,54 +1,53 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Menu } from '../components/Menu'
-import styles from '../styles/Home.module.css'
-import styled from "styled-components";
-import Link from 'next/link'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import styled from 'styled-components';
+
+import { Menu } from '../components/Menu';
 
 const Odkaz = styled.span`
-    color: #657F6F;
+  color: #657f6f;
 `;
 
 const Obsah = styled.main`
-    min-height: 100vh;
-    padding: 4rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Container = styled.div`
   padding: 0 2rem;
-  background-color: #F6EBD8;
+  background-color: #f6ebd8;
 `;
 
 const Nadpis = styled.h1`
-    text-align: center;
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
 `;
 
 const Podnadpis = styled.h3`
-    margin-top: 5rem;
-    background-color: #A4D2B2;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: solid 1px #A38456;
+  margin-top: 5rem;
+  background-color: #a4d2b2;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: solid 1px #a38456;
 `;
 
 const Tip = styled.h3`
-    font-size: 80%;
-    background-color: #ECDCAF;
-    padding: .7rem;
-    border: solid 1px #A38456;
-    border-radius:1rem;
+  font-size: 80%;
+  background-color: #ecdcaf;
+  padding: 0.7rem;
+  border: solid 1px #a38456;
+  border-radius: 1rem;
 `;
 
 const Home: NextPage = () => {
-
   return (
     <Container>
       <Head>
@@ -59,16 +58,22 @@ const Home: NextPage = () => {
 
       <Menu />
       <Obsah>
-
         <Nadpis>Rezervátor skautských kluboven</Nadpis>
-        <Podnadpis>Pro prohlížení kluboven přejdi na záložku <Odkaz><Link href="./prohlizec">Prohlížeč kluboven</Link></Odkaz>, pro přidání klubovny se přihlaš.</Podnadpis>
-        <Tip>Tip: Pokud si chceš uložit klubovnu do oblíbených porovnávat je a hodnotit je, přihlaš se na svůj účet.</Tip>
-        {/*<Mapa />*/}
-
-        
+        <Podnadpis>
+          Pro prohlížení kluboven přejdi na záložku{' '}
+          <Odkaz>
+            <Link href="./prohlizec">Prohlížeč kluboven</Link>
+          </Odkaz>
+          , pro přidání klubovny se přihlaš.
+        </Podnadpis>
+        <Tip>
+          Tip: Pokud si chceš uložit klubovnu do oblíbených porovnávat je a
+          hodnotit je, přihlaš se na svůj účet.
+        </Tip>
+        {/* <Mapa /> */}
       </Obsah>
 
-      {/*<footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -79,9 +84,9 @@ const Home: NextPage = () => {
             <Image src="/logo.svg" alt="Vercel Logo" width={100} height={50} />
           </span>
         </a>
-  </footer>*/}
+  </footer> */}
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

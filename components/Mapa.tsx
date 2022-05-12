@@ -1,44 +1,50 @@
-import { useEffect, useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
-import styles from "../styles/Map.module.css";
+import { useEffect, useState } from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
-export const Mapa : React.FC = () => {
-    const [width, setWidth]= useState("99vw");
+import styles from '../styles/Map.module.css';
 
-    const [viweport, setViewport] = useState({
-        latitude: 49.7437572,
-        longitude: 15.3386383,
-        zoom: 7,
-        width: "100vw",
-        height: "100vh"
-    })
+export const Mapa: React.FC = () => {
+  const [width, setWidth] = useState('99vw');
 
-    //TODO
-    useEffect(() => {
-        const size = window.document.body.offsetWidth;
-        setWidth(`${size}px`);
-    }, [, setWidth]);
+  const [viweport, setViewport] = useState({
+    latitude: 49.743_757_2,
+    longitude: 15.338_638_3,
+    zoom: 7,
+    width: '100vw',
+    height: '100vh',
+  });
 
-    return <>
-            <ReactMapGL style={{
-                position: "relative",
-                bottom: 0
-            }}
-                {...viweport} 
-                mapboxApiAccessToken="pk.eyJ1IjoieWFyeW5hdG9yIiwiYSI6ImNreWtuaW0wMTBmZzYybnBuMmpoMWR6cTcifQ.1nyUrqUwVQ6LmJsyf6_nMw"
-                mapStyle="mapbox://styles/yarynator/ckykny3sp6a6514qpyf59hild"
-                onViewportChange={ setViewport }
-                >
-                
-                <Marker key="1" latitude={50.0339111} longitude={15.7905153}>
-                    <img src="/point.png" alt="Point" width={20} height={27} onClick={() => {
-                        
-                    }}/>
-                    <div className={styles.markerDiv}>
-                        <strong>Nazev: </strong> Nazev
-                    </div>
-                </Marker>
+  // TODO
+  useEffect(() => {
+    const size = window.document.body.offsetWidth;
+    setWidth(`${size}px`);
+  }, [, setWidth]);
 
-            </ReactMapGL>
+  return (
+    <>
+      <ReactMapGL
+        style={{
+          position: 'relative',
+          bottom: 0,
+        }}
+        {...viweport}
+        mapboxApiAccessToken="pk.eyJ1IjoieWFyeW5hdG9yIiwiYSI6ImNreWtuaW0wMTBmZzYybnBuMmpoMWR6cTcifQ.1nyUrqUwVQ6LmJsyf6_nMw"
+        mapStyle="mapbox://styles/yarynator/ckykny3sp6a6514qpyf59hild"
+        onViewportChange={setViewport}
+      >
+        <Marker key="1" latitude={50.033_911_1} longitude={15.790_515_3}>
+          <img
+            src="/point.png"
+            alt="Point"
+            width={20}
+            height={27}
+            onClick={() => {}}
+          />
+          <div className={styles.markerDiv}>
+            <strong>Nazev: </strong> Nazev
+          </div>
+        </Marker>
+      </ReactMapGL>
     </>
-}
+  );
+};
