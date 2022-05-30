@@ -1,9 +1,6 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
-import { useUsersQuery } from '../generated/graphql';
 import { useUserContext } from './userContext';
 
 const Required = styled.span`
@@ -61,42 +58,12 @@ const Warning = styled.div`
   color: red;
 `;
 
-function createInputField(
-  idName: string,
-  name: string,
-  placeholder: string,
-  required: boolean,
-  type: string,
-) {
-  return (
-    <>
-      <InputField>
-        <Nazev htmlFor={idName}>
-          {name}
-          {required ? <Required>*</Required> : ''}:{' '}
-        </Nazev>
-        <Pole id={idName} name={idName} type={type} placeholder={placeholder} />
-      </InputField>
-    </>
-  );
-}
-
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [warning, setWarning] = useState('');
 
-  const { loading, data, error } = useUsersQuery();
-
-  const { user, login } = useUserContext();
-
-  const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { login } = useUserContext();
 
   return (
     <>

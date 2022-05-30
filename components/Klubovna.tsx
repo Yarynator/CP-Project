@@ -81,7 +81,7 @@ const Error = styled.h3`
 `;
 
 const Description = (props: any) => {
-  if (props.title == undefined) {
+  if (props.title === undefined) {
     return <Error>Error: Musíš zadat název položky!</Error>;
   }
 
@@ -123,7 +123,7 @@ export const Klubovna: React.FC<Props> = (props) => {
                 <Description title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Description> */}
 
             {props.klubovna.Description.map((descProp) => (
-              <Description title={descProp.name}>{descProp.text}</Description>
+              <Description key={descProp} title={descProp.name}>{descProp.text}</Description>
             ))}
           </div>
           <CalendarContainer>

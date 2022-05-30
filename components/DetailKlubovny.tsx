@@ -22,6 +22,7 @@ const Stranka = () => {
 export const DetailKlubovny: React.FC<Props> = (props) => {
   return (
     <>
+      {console.log(props)}
       <Stranka></Stranka>
     </>
   );

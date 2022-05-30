@@ -76,7 +76,7 @@ export const Kalendar = () => {
 
   useEffect(() => {
     const day = startDay.clone().subtract(1, 'day');
-    const a: any = [];
+    const a: Array<any> = [];
 
     while (day.isBefore(endDay, 'day')) {
       a.push(
@@ -112,25 +112,25 @@ export const Kalendar = () => {
     <div>
       <Header>
         <Arrow onClick={() => !thisMonth() && setValue(prevMonth())}>
-          {!thisMonth() ? String.fromCharCode(171) : null}
+          {!thisMonth() ? String.fromCodePoint(171) : undefined}
         </Arrow>
         <div>
           {currentMonthName()} {currentYear()}
         </div>
         <Arrow onClick={() => setValue(nextMonth())}>
-          {String.fromCharCode(187)}
+          {String.fromCodePoint(187)}
         </Arrow>
       </Header>
       <div>
         <DayNames>
           {['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'].map((d) => (
-            <div>{d}</div>
+            <div key={d}>{d}</div>
           ))}
         </DayNames>
         {calendar.map((week) => (
-          <Week>
+          <Week key="week">
             {week.map((day) => (
-              <DayContainer onClick={() => setValue(day)}>
+              <DayContainer key="day" onClick={() => setValue(day)}>
                 {value.isSame(day, 'day') ? (
                   <Selected>{day.format('D').toString()}</Selected>
                 ) : day.isSame(new Date(), 'day') ? (

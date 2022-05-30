@@ -15,7 +15,6 @@ const apolloServer = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   context: async ({ req }) => {
     const authorizationHeader = req.headers.authorization;
-    console.log(authorizationHeader);
     return {
       user: authorizationHeader
         ? await verifyToken(req.headers.authorization)
@@ -42,6 +41,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await apolloServer.createHandler({
     path: '/api/graphql',
   })(req, res);
+
+  return true;
 };
 export const config = {
   api: {

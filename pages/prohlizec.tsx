@@ -26,13 +26,6 @@ const Nadpis = styled.h1`
   font-size: 4rem;
 `;
 
-const Icon = styled.div`
-  text-align: center;
-  font-size: large;
-
-  margin-top: 1rem;
-`;
-
 const ProhlizecPage: NextPage = () => {
   const { loading, data, error } = useClubhousesQuery();
 
@@ -57,7 +50,7 @@ const ProhlizecPage: NextPage = () => {
           <Nadpis>Prohlížeč kluboven</Nadpis>
 
           {data?.clubhouses.map((element) => (
-            <Klubovna
+            <Klubovna key={element.ID}
               klubovna={{
                 id: element.ID,
                 name: element.name,

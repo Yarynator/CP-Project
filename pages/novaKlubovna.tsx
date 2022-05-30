@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import { Menu } from '../components/Menu';
@@ -38,7 +37,6 @@ const Warning = styled.div`
 `;
 
 const MojeKlubovnaPage: NextPage = () => {
-  const router = useRouter();
 
   const { user } = useUserContext();
 

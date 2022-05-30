@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 
@@ -57,7 +56,6 @@ const MojeKlubovnaPage: NextPage = () => {
     }
   });
 
-  if (true) {
     if (klubovny.length === 0) {
       return (
         <>
@@ -82,7 +80,7 @@ const MojeKlubovnaPage: NextPage = () => {
           </Container>
         </>
       );
-    }
+    
     return (
       <>
         <Container>
@@ -96,7 +94,7 @@ const MojeKlubovnaPage: NextPage = () => {
             <Nadpis>Moje Klubovna</Nadpis>
 
             {klubovny.map((element) => (
-              <Klubovna
+              <Klubovna key={5}
                 klubovna={{
                   id: element.ID,
                   name: element.name,

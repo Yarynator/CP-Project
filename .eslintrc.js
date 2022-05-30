@@ -35,7 +35,7 @@ module.exports = {
     },
     rules: {
       'prettier/prettier': [
-        'error',
+        'off',
         {
           bracketSpacing: true,
           bracketSameLine: false,

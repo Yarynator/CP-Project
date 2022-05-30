@@ -1,5 +1,5 @@
 import { getApp } from '../../firestore/firestore';
-export const verifyToken = async (token: string) => {
+export const verifyToken = async (token: any) => {
   const app = getApp();
   try {
     console.log('veryfying token')
