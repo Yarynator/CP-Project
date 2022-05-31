@@ -45,7 +45,7 @@ export const NovaKlubovna = () => {
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
 
-  const [addClubhouse, { loading: mutationIsLoading }] =
+  const [addClubhouse] =
     useAddClubhouseMutation();
 
   const { user } = useUserContext();

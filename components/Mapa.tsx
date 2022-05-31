@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 
 import styles from '../styles/Map.module.css';
 
 export const Mapa: React.FC = () => {
-  const [width, setWidth] = useState('99vw');
 
   const [viweport, setViewport] = useState({
     latitude: 49.743_757_2,
@@ -13,12 +11,6 @@ export const Mapa: React.FC = () => {
     width: '100vw',
     height: '100vh',
   });
-
-  // TODO
-  useEffect(() => {
-    const size = window.document.body.offsetWidth;
-    setWidth(`${size}px`);
-  }, [, setWidth]);
 
   return (
     <>

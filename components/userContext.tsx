@@ -36,7 +36,7 @@ export type UserContextProps = {
 };
 export let auth: Auth;
 // @ts-ignore
-const UserContext = React.createContext<UserContextProps>(null);
+const UserContext = React.createContext<UserContextProps>();
 const login = async (username: string, password: string) => {
   const cred = await signInWithEmailAndPassword(auth, username, password);
   return cred?.user;
@@ -91,10 +91,10 @@ export const UserContextProvider: React.FC = ({ children }) => {
   const [{ loading, user }, setUser] = useState(defaultState);
   useEffect(() => {
     initializeFirebase();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser({
         loading: false,
-        user: user ? createFullUser(user) : undefined,
+        user: u ? createFullUser(u) : undefined,
       });
       // @ts-ignore - for dev purposes
       window.myLogout = user

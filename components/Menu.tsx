@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Login, Register } from './Login';
@@ -30,24 +30,15 @@ const Item = styled.ul`
   }
 `;
 
-export const Menu = () => {
+export const Menu : React.FC = () => {
   const [loginOpened, changeLoginOpened] = useState('none');
-  const [userr, setUser] = useState('');
 
   const { user, logout } = useUserContext();
 
   const router = useRouter();
 
-  useEffect(() => {
-    setUser(
-      sessionStorage.getItem('name') == undefined
-        ? ''
-        : sessionStorage.getItem('name'),
-    );
-  });
-
   if (!user) {
-    if (loginOpened == 'none') {
+    if (loginOpened === 'none') {
       return (
         <>
           <Container>
@@ -85,7 +76,7 @@ export const Menu = () => {
         </>
       );
     }
-    if (loginOpened == 'login') {
+    if (loginOpened === 'login') {
       return (
         <>
           <Container>
@@ -125,7 +116,7 @@ export const Menu = () => {
         </>
       );
     }
-    if (loginOpened == 'register') {
+    if (loginOpened === 'register') {
       return (
         <>
           <Container>
@@ -211,19 +202,4 @@ export const Menu = () => {
   }
 
   return <></>;
-
-  {
-    /* <div className={styles.menu}>
-        <ul className={styles.menuItem}>
-            <li><Link href="/">Domů</Link></li>
-            <li>Prohlížeč kluboven</li>
-            <li><Link href="./mapa">Mapa</Link></li>
-            <li>O projektu</li>
-        </ul>
-        <div className={styles.menuItem}>
-            <Login />
-            <Register />
-        </div>
-</div> */
-  }
 };

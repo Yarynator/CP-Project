@@ -173,7 +173,7 @@ export const Register = () => {
   const [passwordAgain, setPasswordAgain] = useState('');
   const [warning, setWarning] = useState('');
 
-  const { user, createUser } = useUserContext();
+  const { createUser } = useUserContext();
 
   // const [registerUser, {loading: mutationIsLoading}] = useRegisterUserMutation();
 

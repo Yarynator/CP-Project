@@ -44,13 +44,20 @@ const Icon = styled.div`
   margin-top: 1rem;
 `;
 
+/* const isGood = (x: any) => {
+   const { user } = useUserContext();
+
+   return x.admins?.includes(user?.user.uid)
+} */
+
 const MojeKlubovnaPage: NextPage = () => {
-  const klubovny: Array<any> = [];
 
   const { user } = useUserContext();
   const { data } = useClubhousesQuery({ skip: !user });
 
-  data?.clubhouses.map((element) => {
+  const klubovny: Array<any> = [];
+
+  data?.clubhouses.forEach((element) => {
     if (element.admins?.includes(user?.user.uid)) {
       klubovny.push(element);
     }

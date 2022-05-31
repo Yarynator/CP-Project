@@ -18,13 +18,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const CalStyle = styled.div`
-  border: solid 1px black;
-  padding: 1rem;
-  height: 40vh;
-  width: 40vh;
-`;
-
 const DescriptionStyle = styled.div`
   width: calc(80vw - 40vh);
 
@@ -74,6 +67,22 @@ const Cal = () => {
   );
 };
 
+
+
+const Desc = (props: any) => {
+  if (props.title === undefined) {
+    return <Error>Error: Musíš zadat název položky!</Error>;
+  }
+  return (
+    <>
+      <DescStyle>
+        <DescTitle>{props.title}:</DescTitle>
+        <DescText>{props.children}</DescText>
+      </DescStyle>
+    </>
+  );
+};
+
 const Description = () => {
   return (
     <>
@@ -92,20 +101,6 @@ const Description = () => {
         <Desc title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Desc>
         {/* <Desc>Neplatná položka</Desc> */}
       </DescriptionStyle>
-    </>
-  );
-};
-
-const Desc = (props: any) => {
-  if (props.title == undefined) {
-    return <Error>Error: Musíš zadat název položky!</Error>;
-  }
-  return (
-    <>
-      <DescStyle>
-        <DescTitle>{props.title}:</DescTitle>
-        <DescText>{props.children}</DescText>
-      </DescStyle>
     </>
   );
 };
