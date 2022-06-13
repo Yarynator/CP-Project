@@ -70,21 +70,7 @@ const Home: NextPage = () => {
           Tip: Pokud si chceš uložit klubovnu do oblíbených porovnávat je a
           hodnotit je, přihlaš se na svůj účet.
         </Tip>
-        {/* <Mapa /> */}
       </Obsah>
-
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/logo.svg" alt="Vercel Logo" width={100} height={50} />
-          </span>
-        </a>
-  </footer> */}
     </Container>
   );
 };

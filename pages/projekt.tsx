@@ -35,15 +35,6 @@ const Footer = styled.p`
   margin-top: 8rem;
 `;
 
-const Warning = styled.div`
-  background-color: #f8d7da;
-  color: #721c24;
-  border: solid 1px #f5c6cb;
-  margin-bottom: 3rem;
-  padding: 1rem;
-  border-radius: 4px;
-`;
-
 const OProjektuPage: NextPage = () => {
   return (
     <>
@@ -57,9 +48,6 @@ const OProjektuPage: NextPage = () => {
         <Obsah>
           <Nadpis>O projektu</Nadpis>
           <Popis>
-            <Warning>
-              Projekt je ve fázi vývoje! Vetšina částí je zatím nefunkčních!
-            </Warning>
             <p>
               Projekt byl vytvořen jako studentský projekt do předmětu Cvičení z
               programování na škole DELTA - SŠIE v Pardubicích.

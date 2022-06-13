@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 import styled from 'styled-components';
 
 import { Kalendar } from './Kalendar';
@@ -25,7 +25,7 @@ const DescriptionContainer = styled.div`
 
 const Image = styled.img`
   flex-grow: 1;
-  width: 10%;
+  max-width: 15vw;
   padding: 1rem;
 `;
 
@@ -95,13 +95,14 @@ const Description = (props: any) => {
 
 export type DescriptionProp = {
   name: string;
-  text: string;
+  text: string | DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 };
 
 export type KlubovnaProp = {
   id: string;
   name: string;
   Description: Array<DescriptionProp>;
+  image: string;
 };
 
 interface Props {
@@ -112,16 +113,10 @@ export const Klubovna: React.FC<Props> = (props) => {
   return (
     <>
       <Container>
-        <Link href={`./detail-klubovny?id=${props.klubovna.id}`}>
-          <Title>{props.klubovna.name}</Title>
-        </Link>
+        <Title>{props.klubovna.name}</Title>
         <DescriptionContainer>
-          <Image src="./logo.svg" />
+          <Image src={props.klubovna.image} alt="Klubovna"/>
           <div>
-            {/* <Description title="Popis">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, nemo dicta? Quaerat maiores facere assumenda sit asperiores ipsam beatae, sint expedita impedit exercitationem magnam culpa accusamus, provident quo adipisci minus?</Description>
-                <Description title="Web">pepazdepa@bezvamail.cz</Description>
-                <Description title="Adresa">Klímovo údolí 52, 530 02 Pardubice</Description> */}
-
             {props.klubovna.Description.map((descProp) => (
               <Description key={descProp} title={descProp.name}>{descProp.text}</Description>
             ))}

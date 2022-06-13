@@ -159,14 +159,12 @@ export const NovaKlubovna = () => {
             <Submit
               type="submit"
               value="Přidat klubovnu"
-              onClick={() => {
+              onClick={async () => {
                 const myuuid = uuid();
 
                 const admin: string = user?.user.uid ? user?.user.uid : 'admin';
 
-                console.log(admin);
-
-                addClubhouse({
+                await addClubhouse({
                   variables: {
                     id: myuuid,
                     name,
@@ -180,9 +178,7 @@ export const NovaKlubovna = () => {
                   },
                 });
 
-                router.push('./moje-klubovna');
-
-                // AddClubhouse(clubhouse);
+                await router.push('./moje-klubovna');
               }}
             />
           </Container>

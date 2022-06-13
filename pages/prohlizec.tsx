@@ -60,14 +60,16 @@ const ProhlizecPage: NextPage = () => {
                     text: element.description,
                   },
                   {
-                    name: 'Web',
-                    text: element.web,
-                  },
-                  {
                     name: 'Adresa',
                     text: `${element.street}, ${element.zip} ${element.city}`,
                   },
+                  {
+                    name: 'Web',
+                    // eslint-disable-next-line prefer-template
+                    text: <a href={"https://" + element.web} target="_blank" rel='noreferrer'>{element.web}</a>
+                  }
                 ],
+                image: element.img
               }}
             />
           ))}

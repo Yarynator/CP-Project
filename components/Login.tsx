@@ -59,17 +59,17 @@ const Warning = styled.div`
 `;
 
 export const Login = () => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [warning, setWarning] = useState('');
 
   const { login } = useUserContext();
 
-  return (
-    <>
-      <AuthDiv>
-        <Title>Login</Title>
-        <InputField>
+  return <>
+  <AuthDiv>
+    <Title>Přihlásit se</Title>
+    <InputField>
           <Nazev htmlFor="email">
             E-mail <Required>*</Required>
           </Nazev>
@@ -96,78 +96,31 @@ export const Login = () => {
           />
         </InputField>
         <Warning>{warning}</Warning>
-        <Submit
-          type="submit"
-          value="Přihlásit se"
-          onClick={() => {
-            {
-              let validace = true;
+        <Submit type="submit" value="Přihlásit se" onClick={async (e) => {
+          e.preventDefault();
 
-              if (email.length === 0 || password.length === 0) {
-                validace = false;
-              }
+          let validace = true;
+          
+          if (email.length === 0 || password.length === 0) {
+            validace = false;
+          }
 
-              if (validace) {
-                /* localStorage.setItem("user", "Yarynator");
-
-                    let found = false;
-                    let id = "";
-                    let name = "";
-                    let surname = "";
-                    let nickname = "";
-                    let dbPass = "";
-
-                    data?.users.map(e => {
-                        if(!found){
-                            if(email === e.email)
-                            {
-                                found = true;
-                                id = e.ID;
-                                name = e.name;
-                                surname = e.surname;
-                                nickname = e.nickname ? e.nickname : "";
-                                dbPass = e.password;
-                            }
-                        }   
-                    });
-
-                    if(found)
-                    {
-                        if(password === dbPass) {
-                            sessionStorage.setItem("ID", id);
-                            sessionStorage.setItem("name", name);
-                            sessionStorage.setItem("surname", surname);
-                            sessionStorage.setItem("nickname", nickname);
-                            sessionStorage.setItem("email", email);
-
-                            setWarning("");
-                    
-                            router.push(router.route);
-                        } else {
-                            setWarning("Špatné heslo");
-                        }
-                    } else {
-                        setWarning("Špatný email")
-                    }
-                    
-                    //router.push(router.route); */
-
-                login(email, password);
-              } else {
-                setWarning('Musis zadat vsecny povinne hodnoty');
-              }
+          if (validace) {
+            try {
+              await login(email, password);
+            } catch(error) {
+              console.log(error);
+              setWarning('Špatné přihlašovací údaje');
             }
-          }}
-        />
-      </AuthDiv>
-    </>
-  );
+          } else {
+            setWarning('Musis zadat vsecny povinne hodnoty');
+          }
+        }}/>
+  </AuthDiv>
+  </>;
 };
 
 export const Register = () => {
-  const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
@@ -175,48 +128,10 @@ export const Register = () => {
 
   const { createUser } = useUserContext();
 
-  // const [registerUser, {loading: mutationIsLoading}] = useRegisterUserMutation();
-
   return (
     <>
       <AuthDiv>
         <Title>Register</Title>
-        <InputField>
-          <Nazev htmlFor="name">
-            Jméno <Required>*</Required>
-          </Nazev>
-          <Pole
-            id="name"
-            type="text"
-            placeholder="Karel"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </InputField>
-        <InputField>
-          <Nazev htmlFor="nickname">Přezdívka</Nazev>
-          <Pole
-            id="nickname"
-            type="text"
-            placeholder="Tank"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-          />
-        </InputField>
-        <InputField>
-          <Nazev htmlFor="surname">
-            Příjmení <Required>*</Required>
-          </Nazev>
-          <Pole
-            id="surname"
-            type="text"
-            placeholder="Klíma"
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
-            required
-          />
-        </InputField>
         <InputField>
           <Nazev htmlFor="email">
             E-mail <Required>*</Required>
@@ -260,53 +175,49 @@ export const Register = () => {
         <Submit
           type="submit"
           value="Zaregistrovat se"
-          onClick={() => {
+          onClick={async (e) => {
+            e.preventDefault();
+
             let validace = true;
 
+            if(password.length < 6) {
+              validace = false;
+              setWarning('Heslo musí mít aspoň 6 znaků');
+            }
+
+            if(password !== passwordAgain) {
+              validace = false;
+              setWarning('Hesla musí být stejná');
+            }
+
             if (
-              name.length === 0 ||
-              surname.length === 0 ||
               email.length === 0 ||
               password.length === 0 ||
               passwordAgain.length === 0
             ) {
               validace = false;
+              setWarning('Musis zadat vsecny povinne hodnoty');
             }
 
             if (validace) {
-              if (password === passwordAgain) {
-                /* let myuuid = uuid();
+              
+                try {
+                  await createUser(email, password);
 
-                    registerUser({
-                        variables: {
-                            id: myuuid,
-                            name: name,
-                            nickname: nickname,
-                            surname: surname,
-                            email: email,
-                            password: password,
-                            clubhouses: [],
-                            favourites: []
-                        }
-                    }) */
-
-                console.log(createUser(email, password));
-
-                setName('');
-                setNickname('');
-                setSurname('');
-                setEmail('');
-                setPassword('');
-                setPasswordAgain('');
-              } else {
-                setWarning('Hesla se musi shodovat');
-              }
-            } else {
-              setWarning('Musis zadat vsecny povinne hodnoty');
-            }
-          }}
+                  setEmail('');
+                  setPassword('');
+                  setPasswordAgain('');
+                }
+                catch(error) {
+                  console.log(error)
+                  setWarning('Špatný formát emailu');
+                }
+            
+          }
+        }}
         />
       </AuthDiv>
     </>
   );
+  return <></>;
 };

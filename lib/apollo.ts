@@ -12,28 +12,24 @@ import { isServer } from './utils';
 
 // source: https://github.com/shshaw/next-apollo-ssr
 
-// @ts-ignore
+// eslint-disable-next-line no-underscore-dangle
 const windowApolloState = !isServer && window.__NEXT_DATA__.apolloState;
 
 let CLIENT: ApolloClient<any>;
 
 const endpoint = `${process.env.NEXT_PUBLIC_API_PATH}/graphql`;
 
+const link = new HttpLink({
+  uri: endpoint,
+  credentials: 'same-origin',
+  headers: {},
+});
+
 const httpLink = (): HttpLink => {
   if (typeof window === 'undefined') {
-    return new HttpLink({
-      uri: endpoint,
-      credentials: 'same-origin',
-      headers: {},
-    });
+    return link;
   }
-  return new HttpLink({
-    uri: endpoint,
-    credentials: 'same-origin',
-    headers: {
-      // jakakoliv hlavička musí byt povolena v CORS
-    },
-  });
+  return link;
 };
 
 const authLink = setContext(async (req, { headers }) => {
@@ -46,6 +42,7 @@ const authLink = setContext(async (req, { headers }) => {
     };
   }
   const user = auth?.currentUser || undefined;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const jwtToken = user ? await user.getIdToken() : undefined;
 
   // return the headers to the context so httpLink can read them

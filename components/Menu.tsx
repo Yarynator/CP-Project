@@ -37,128 +37,73 @@ export const Menu : React.FC = () => {
 
   const router = useRouter();
 
-  if (!user) {
-    if (loginOpened === 'none') {
-      return (
-        <>
-          <Container>
-            <Item>
-              <li>
-                <Link href="/">Domů</Link>
-              </li>
-              <li>
-                <Link href="./prohlizec">Prohlížeč kluboven</Link>
-              </li>
-              <li>
-                <Link href="./mapa">Mapa</Link>
-              </li>
-              <li>
-                <Link href="./projekt">O projektu</Link>
-              </li>
-            </Item>
-            <Item>
-              <li
-                onClick={() => {
-                  changeLoginOpened('login');
-                }}
-              >
-                Login
-              </li>
-              <li
-                onClick={() => {
-                  changeLoginOpened('register');
-                }}
-              >
-                Register
-              </li>
-            </Item>
-          </Container>
-        </>
-      );
-    }
-    if (loginOpened === 'login') {
-      return (
-        <>
-          <Container>
-            <Item>
-              <li>
-                <Link href="/">Domů</Link>
-              </li>
-              <li>
-                <Link href="./prohlizec">Prohlížeč kluboven</Link>
-              </li>
-              <li>
-                <Link href="./mapa">Mapa</Link>
-              </li>
-              <li>
-                <Link href="./projekt">O projektu</Link>
-              </li>
-            </Item>
-            <Item>
-              <li
-                onClick={() => {
-                  changeLoginOpened('none');
-                }}
-              >
-                Login
-              </li>
-              <li
-                onClick={() => {
-                  changeLoginOpened('register');
-                }}
-              >
-                Register
-              </li>
-            </Item>
-          </Container>
+  console.log(user);
 
-          <Login />
-        </>
-      );
-    }
-    if (loginOpened === 'register') {
-      return (
-        <>
-          <Container>
-            <Item>
-              <li>
-                <Link href="/">Domů</Link>
-              </li>
-              <li>
-                <Link href="./prohlizec">Prohlížeč kluboven</Link>
-              </li>
-              <li>
-                <Link href="./mapa">Mapa</Link>
-              </li>
-              <li>
-                <Link href="./projekt">O projektu</Link>
-              </li>
-            </Item>
-            <Item>
-              <li
-                onClick={() => {
-                  changeLoginOpened('login');
-                }}
-              >
-                Login
-              </li>
-              <li
-                onClick={() => {
-                  changeLoginOpened('none');
-                }}
-              >
-                Register
-              </li>
-            </Item>
-          </Container>
-
-          <Register />
-        </>
-      );
-    }
-  } else {
-    return (
-      <>
+  if(!user?.user) {
+    switch(loginOpened){
+      case "none":
+        return <>
+      <Container>
+        <Item>
+          <li>
+            <Link href="/">Domů</Link>
+          </li>
+          <li>
+            <Link href="./prohlizec">Prohlížeč kluboven</Link>
+          </li>
+          <li>
+            <Link href="./projekt">O projektu</Link>
+          </li>
+        </Item>
+        <Item>
+          <li
+            onClick={() => {
+              changeLoginOpened('login');
+            }}
+          >Login
+          </li>
+          <li
+            onClick={() => {
+              changeLoginOpened('register');
+            }}
+          >Register
+          </li>
+        </Item>
+      </Container>
+      </>;
+      case "login":
+        return <>
+      <Container>
+        <Item>
+          <li>
+            <Link href="/">Domů</Link>
+          </li>
+          <li>
+            <Link href="./prohlizec">Prohlížeč kluboven</Link>
+          </li>
+          <li>
+            <Link href="./projekt">O projektu</Link>
+          </li>
+        </Item>
+        <Item>
+          <li
+            onClick={() => {
+              changeLoginOpened('none');
+            }}
+          >Login
+          </li>
+          <li
+            onClick={() => {
+              changeLoginOpened('register');
+            }}
+          >Register
+          </li>
+        </Item>
+        <Login />
+      </Container>
+      </>;
+      default:
+        return <>
         <Container>
           <Item>
             <li>
@@ -168,7 +113,37 @@ export const Menu : React.FC = () => {
               <Link href="./prohlizec">Prohlížeč kluboven</Link>
             </li>
             <li>
-              <Link href="./mapa">Mapa</Link>
+              <Link href="./projekt">O projektu</Link>
+            </li>
+          </Item>
+          <Item>
+            <li
+              onClick={() => {
+                changeLoginOpened('login');
+              }}
+            >Login
+            </li>
+            <li
+              onClick={() => {
+                changeLoginOpened('none');
+              }}
+            >Register
+            </li>
+          </Item>
+          <Register />
+        </Container>
+        </>
+    }
+  } 
+  
+    return <>
+        <Container>
+          <Item>
+            <li>
+              <Link href="/">Domů</Link>
+            </li>
+            <li>
+              <Link href="./prohlizec">Prohlížeč kluboven</Link>
             </li>
             <li>
               <Link href="./projekt">O projektu</Link>
@@ -178,19 +153,12 @@ export const Menu : React.FC = () => {
             <Link href="./moje-klubovna">
               <li>Moje klubovna</li>
             </Link>
-            <li>Profil</li>
             <li
-              onClick={() => {
-                /* sessionStorage.removeItem("ID");
-                                sessionStorage.removeItem("name");
-                                sessionStorage.removeItem("surname");
-                                sessionStorage.removeItem("nickname");
-                                sessionStorage.removeItem("email");
-                                setUser(""); */
+              onClick={async () => {
 
-                logout();
+                await logout();
 
-                router.push('/');
+                await router.push('/');
               }}
             >
               Odhlásit se
@@ -198,8 +166,5 @@ export const Menu : React.FC = () => {
           </Item>
         </Container>
       </>
-    );
-  }
-
-  return <></>;
+  
 };

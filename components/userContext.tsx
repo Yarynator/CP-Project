@@ -28,13 +28,13 @@ export type User = {
 export type UserContextProps = {
   user?: User;
   loading: boolean;
-  logout?: () => Promise<void>;
-  login?: (username: string, password: string) => Promise<FirebaseUser>;
-  createUser?: (username: string, password: string) => Promise<FirebaseUser>;
+  logout: () => Promise<void>;
+  login: (username: string, password: string) => Promise<FirebaseUser>;
+  createUser: (username: string, password: string) => Promise<FirebaseUser>;
   userExists?: (username: string) => Promise<boolean>;
   deleteUser?: (password: string) => Promise<void>;
 };
-export let auth: Auth;
+let auth: Auth;
 // @ts-ignore
 const UserContext = React.createContext<UserContextProps>();
 const login = async (username: string, password: string) => {
@@ -109,9 +109,9 @@ export const UserContextProvider: React.FC = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        logout: hasUser ? logout : undefined,
-        login: hasUser ? undefined : login,
-        createUser: hasUser ? undefined : createUser,
+        logout,
+        login,
+        createUser,
         userExists: hasUser ? undefined : userExists,
         deleteUser: hasUser ? deleteUser : undefined,
         loading,

@@ -53,7 +53,7 @@ const Icon = styled.div`
 const MojeKlubovnaPage: NextPage = () => {
 
   const { user } = useUserContext();
-  const { data } = useClubhousesQuery({ skip: !user });
+  const { data } = useClubhousesQuery({ skip: !user?.user });
 
   const klubovny: Array<any> = [];
 
@@ -63,6 +63,9 @@ const MojeKlubovnaPage: NextPage = () => {
     }
   });
 
+  console.log(klubovny)
+
+  if(user?.user){
     if (klubovny.length === 0) {
       return (
         <>
@@ -87,7 +90,7 @@ const MojeKlubovnaPage: NextPage = () => {
           </Container>
         </>
       );
-    
+    }
     return (
       <>
         <Container>
@@ -101,7 +104,7 @@ const MojeKlubovnaPage: NextPage = () => {
             <Nadpis>Moje Klubovna</Nadpis>
 
             {klubovny.map((element) => (
-              <Klubovna key={5}
+              <Klubovna key={`klubovna${element.ID}`}
                 klubovna={{
                   id: element.ID,
                   name: element.name,
@@ -110,7 +113,16 @@ const MojeKlubovnaPage: NextPage = () => {
                       name: 'Popis',
                       text: element.description,
                     },
+                    {
+                      name: "Adresa",
+                      text: `${element.street}, ${element.zip} ${element.city}`
+                    },
+                    {
+                      name: "Web",
+                      text: <a href={`https://${element.web}`} target="_blank" rel='noreferrer'>{element.web}</a>
+                    }
                   ],
+                  image: element.img
                 }}
               />
             ))}

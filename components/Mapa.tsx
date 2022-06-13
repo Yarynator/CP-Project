@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 
 import styles from '../styles/Map.module.css';
@@ -25,13 +26,6 @@ export const Mapa: React.FC = () => {
         onViewportChange={setViewport}
       >
         <Marker key="1" latitude={50.033_911_1} longitude={15.790_515_3}>
-          <img
-            src="/point.png"
-            alt="Point"
-            width={20}
-            height={27}
-            onClick={() => {}}
-          />
           <div className={styles.markerDiv}>
             <strong>Nazev: </strong> Nazev
           </div>

@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { Kalendar } from './Kalendar';
@@ -106,13 +104,6 @@ const Description = () => {
 };
 
 export const MojeKlubovna = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      router.push('/');
-    }
-  }, []);
 
   return (
     <>
