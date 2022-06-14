@@ -6,12 +6,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+// @ts-ignore
 import { auth } from '../components/userContext';
 // import 'firebase/compat/auth
 import { isServer } from './utils';
 
 // source: https://github.com/shshaw/next-apollo-ssr
 
+// @ts-ignore
 // eslint-disable-next-line no-underscore-dangle
 const windowApolloState = !isServer && window.__NEXT_DATA__.apolloState;
 

@@ -8,6 +8,7 @@ export const verifyToken = async (token: any) => {
       console.log('invalid token format');
       return undefined;
     }
+    // @ts-ignore
     const decoded = await app.auth().verifyIdToken(parts[1]);
     console.log('verified token for user', { email: decoded.email })
     return decoded;

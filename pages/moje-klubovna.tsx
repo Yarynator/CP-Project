@@ -44,16 +44,10 @@ const Icon = styled.div`
   margin-top: 1rem;
 `;
 
-/* const isGood = (x: any) => {
-   const { user } = useUserContext();
-
-   return x.admins?.includes(user?.user.uid)
-} */
-
 const MojeKlubovnaPage: NextPage = () => {
 
   const { user } = useUserContext();
-  const { data } = useClubhousesQuery({ skip: !user?.user });
+  const { data, loading } = useClubhousesQuery({ skip: !user?.user });
 
   const klubovny: Array<any> = [];
 
@@ -63,7 +57,9 @@ const MojeKlubovnaPage: NextPage = () => {
     }
   });
 
-  console.log(klubovny)
+  if(loading) {
+    return <>Loading</>
+  }
 
   if(user?.user){
     if (klubovny.length === 0) {
